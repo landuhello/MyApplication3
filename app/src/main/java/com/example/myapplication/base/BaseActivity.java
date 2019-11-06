@@ -24,9 +24,9 @@ import butterknife.Unbinder;
         t.bind(this);
         initdata();
     }
-    abstract int initview();
-    abstract T setpresenter();
-    abstract void initdata();
+    protected abstract int initview();
+    protected abstract T setpresenter();
+    protected abstract void initdata();
 
     @Override
     protected void onDestroy() {
