@@ -3,6 +3,7 @@ package com.example.myapplication.model.http;
 import com.example.myapplication.model.api.Api;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.LoginBean;
+import com.example.myapplication.model.bean.NearbyBean;
 
 
 import java.util.Map;
@@ -76,6 +77,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
                     @Override
                     public void accept(CinemaBean cinemaBean) throws Exception {
                         callBack.success(cinemaBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //附近影院
+    public void getnear(Map<String,String>map, Map<String,Integer>nearmap, final CallBack callBack){
+        api.donear(map,nearmap)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<NearbyBean>() {
+                    @Override
+                    public void accept(NearbyBean nearbyBean) throws Exception {
+                        callBack.success(nearbyBean);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

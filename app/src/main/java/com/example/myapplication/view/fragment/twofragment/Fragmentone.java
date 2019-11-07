@@ -1,5 +1,6 @@
 package com.example.myapplication.view.fragment.twofragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.myapplication.R;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.presenter.CinPresenter;
+import com.example.myapplication.view.activity.MovexiangqingMainActivity;
 import com.example.myapplication.view.adapter.Fragmentoneadapter;
 import com.example.myapplication.view.inteface.MomInteface;
 
@@ -66,6 +68,16 @@ import butterknife.Unbinder;
         fragmentoneRecy.setLayoutManager(manager);
         fragmentoneadapter = new Fragmentoneadapter();
         fragmentoneRecy.setAdapter(fragmentoneadapter);
+        fragmentoneadapter.setDomove(new Fragmentoneadapter.Domove() {
+            @Override
+            public void onclick(String name, String address) {
+                Intent intent = new Intent(getContext(), MovexiangqingMainActivity.class);
+                intent.putExtra("name",name);
+                intent.putExtra("address",address);
+                startActivity(intent);
+
+            }
+        });
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.NearbyBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,19 +20,18 @@ import java.util.List;
  *@Auther:刘炳良
  *@Date: 时间
  *@Description:功能
- * */public class Fragmentoneadapter extends RecyclerView.Adapter<Fragmentoneadapter.Viewholder> {
-    private List<CinemaBean.ResultBean> result=new ArrayList<>();
-    private String name;
-    private String address;
+ * */public class Fragmenttwofujinadapter extends RecyclerView.Adapter<Fragmenttwofujinadapter.Viewholder> {
+    private List<NearbyBean.ResultBean> result;
+    private double km=0;
 
-    public void setResult(List<CinemaBean.ResultBean> result) {
+    public void setResult(List<NearbyBean.ResultBean> result) {
         this.result = result;
     }
 
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layoutfragmentonerecy, viewGroup, false);
+        View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layoutfragmenttworecy, viewGroup, false);
         Viewholder viewholder = new Viewholder(inflate);
         return viewholder;
     }
@@ -40,17 +40,8 @@ import java.util.List;
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         viewholder.textView.setText(result.get(i).getName());
         viewholder.textView1.setText(result.get(i).getAddress());
+        viewholder.textView2.setText(Double.valueOf(result.get(i).getDistance()/1000)+"km");
         Glide.with(viewholder.itemView.getContext()).load(result.get(i).getLogo()).into(viewholder.imageView);
-        name = result.get(i).getName();
-        address = result.get(i).getAddress();
-        viewholder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (domove!=null){
-                    domove.onclick(name, address);
-                }
-            }
-        });
     }
 
     @Override
@@ -65,24 +56,17 @@ import java.util.List;
 
     class Viewholder extends RecyclerView.ViewHolder{
 
-        private final ImageView imageView;
-        private final TextView textView;
-        private final TextView textView1;
+        ImageView imageView;
+        TextView textView;
+        TextView textView1;
+        TextView textView2;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.one_im);
-            textView = itemView.findViewById(R.id.one_te);
-            textView1 = itemView.findViewById(R.id.one_te1);
+            imageView = itemView.findViewById(R.id.two_im);
+            textView = itemView.findViewById(R.id.two_te);
+            textView1 = itemView.findViewById(R.id.two_te1);
+            textView2 = itemView.findViewById(R.id.two_te2);
         }
-    }
-    //条目点击接口回调
-    public interface Domove{
-        void onclick(String name,String address);
-    }
-    private Domove domove;
-
-    public void setDomove(Domove domove) {
-        this.domove = domove;
     }
 }

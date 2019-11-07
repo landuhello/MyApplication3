@@ -15,7 +15,7 @@
         >
         <ImageView
             android:layout_marginLeft="6dp"
-            android:id="@+id/one_im"
+            android:id="@+id/two_im"
             android:layout_gravity="center_vertical"
             android:layout_width="70dp"
             android:layout_height="70dp" />
@@ -28,8 +28,8 @@
             >
             <TextView
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="20dp"
-                android:id="@+id/one_te"
+                android:layout_marginTop="15dp"
+                android:id="@+id/two_te"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/ont_te1"
@@ -39,13 +39,24 @@
             <TextView
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/one_te1"
+                android:id="@+id/two_te1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="海淀区清河中街68号华润五彩城购物中心东区7层"
                 android:layout_marginRight="10dp"
                 android:textColor="#deffffff"
                 android:textSize="12sp" />
+            <TextView
+                android:id="@+id/two_te2"
+                android:layout_marginLeft="186dp"
+                android:layout_marginRight="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#ffffff"
+                android:gravity="end"
+                android:text="2.3km"
+                />
         </LinearLayout>
 
     </LinearLayout>

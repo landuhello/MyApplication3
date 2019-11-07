@@ -2,6 +2,7 @@ package com.example.myapplication.model.api;
 
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.LoginBean;
+import com.example.myapplication.model.bean.NearbyBean;
 
 import java.util.Map;
 
@@ -26,5 +27,8 @@ import retrofit2.http.QueryMap;
     //推荐影院
     @GET("cinema/v1/findRecommendCinemas")
     Observable<CinemaBean> docin(@QueryMap Map<String,Integer> map);
+    //附近影院
+    @GET("cinema/v1/findNearbyCinemas")
+    Observable<NearbyBean> donear(@QueryMap Map<String,String>map,@QueryMap Map<String,Integer>nearmap);
 
 }
