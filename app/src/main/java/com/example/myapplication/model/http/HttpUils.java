@@ -1,6 +1,7 @@
 package com.example.myapplication.model.http;
 
 import com.example.myapplication.model.api.Api;
+import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.LoginBean;
 
 
@@ -11,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -64,6 +66,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
                 });
 
 
+    }
+    //推荐影院
+    public void getcin(Map<String,Integer>map, final CallBack callBack){
+        api.docin(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<CinemaBean>() {
+                    @Override
+                    public void accept(CinemaBean cinemaBean) throws Exception {
+                        callBack.success(cinemaBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
     }
     public interface CallBack<A>{
         void success(A a);
