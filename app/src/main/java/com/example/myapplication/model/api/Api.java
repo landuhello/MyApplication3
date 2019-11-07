@@ -1,7 +1,11 @@
 package com.example.myapplication.model.api;
 
+import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
+import com.example.myapplication.model.bean.RmenBean;
+import com.example.myapplication.model.bean.ZhengBean;
 
 import java.util.Map;
 
@@ -26,5 +30,17 @@ import retrofit2.http.QueryMap;
     //推荐影院
     @GET("cinema/v1/findRecommendCinemas")
     Observable<CinemaBean> docin(@QueryMap Map<String,Integer> map);
+    //Banner
+    @GET("tool/v2/banner")
+    Observable<BannerBean> getBan();
+    //正在热映
+    @GET("movie/v2/findReleaseMovieList?page=1&count=12")
+    Observable<ZhengBean> getzheng();
+    //即将上映
+    @GET("movie/v2/findComingSoonMovieList?page=1&count=3")
+    Observable<JiBean> getji();
+    //热门上映
+    @GET("movie/v2/findHotMovieList?page=1&count=12")
+    Observable<RmenBean> getrmen();
 
 }
