@@ -1,9 +1,11 @@
 package com.example.myapplication.model.http;
 
 import com.example.myapplication.model.api.Api;
+import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.NearbyBean;
+import com.example.myapplication.model.bean.PaiqiBean;
 
 
 import java.util.Map;
@@ -101,6 +103,41 @@ import retrofit2.converter.gson.GsonConverterFactory;
                         throwable.printStackTrace();
                     }
                 });
+    }
+    //影院用户评论
+    public void getall(int cinemaId, Map<String,Integer>map, final CallBack Callback){
+        api.doall(cinemaId,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<AllcimBean>() {
+                    @Override
+                    public void accept(AllcimBean allcimBean) throws Exception {
+                        Callback.success(allcimBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                      throwable.printStackTrace();
+                    }
+                });
+
+    }
+    public void getpaiqi(int cinemaId, Map<String,Integer>map, final CallBack Callback){
+        api.dopaiqi(cinemaId,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<PaiqiBean>() {
+                    @Override
+                    public void accept(PaiqiBean paiqiBean) throws Exception {
+                        Callback.success(paiqiBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+
     }
     public interface CallBack<A>{
         void success(A a);

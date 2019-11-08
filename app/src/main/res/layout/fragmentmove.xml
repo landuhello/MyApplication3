@@ -34,7 +34,7 @@
             android:layout_height="30dp" />
     </LinearLayout>
 <android.support.design.widget.TabLayout
-    app:tabGravity="center"
+    app:tabGravity="fill"
     app:tabTextColor="#ffffff"
     android:id="@+id/fragmenttwo_tab"
     android:background="#1c2243"

@@ -96,6 +96,20 @@
             android:text="自驾：
 可沿北五环到上地环岛，向北与第二环岛（上地七街），向西500米左右即到"
             />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/one_paiqi"
+        android:background="#e8185e"
+        android:text="查看该影院电影排期"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+</RelativeLayout>
+
     </LinearLayout>
+
 
 </LinearLayout>

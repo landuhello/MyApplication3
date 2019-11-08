@@ -27,7 +27,8 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-        <activity android:name=".view.activity.MovexiangqingMainActivity"></activity>
+        <activity android:name=".view.activity.MovexiangqingMainActivity" />
+        <activity android:name=".view.activity.Main3Activity"></activity>
     </application>
 
 </manifest>

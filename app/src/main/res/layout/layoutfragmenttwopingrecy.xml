@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#141931"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        android:background="#1c2243"
+        >
+        <ImageView
+            android:layout_marginLeft="35dp"
+            android:id="@+id/twoping_im"
+            android:layout_gravity="center_vertical"
+            android:layout_width="44dp"
+            android:layout_height="44dp" />
+        <TextView
+            android:id="@+id/twopintg_text"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="48dp"
+            android:layout_height="17dp"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:text="冷月女神"
+            />
+        <TextView
+            android:id="@+id/twoping_time"
+            android:layout_marginLeft="130dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:layout_width="79dp"
+            android:layout_height="17dp"
+            android:text="04－24  09:15"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#1c2243"
+        >
+        <TextView
+            android:id="@+id/twoping_long"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:text="还可以吧，交通很方便，环境很好"
+            />
+    </LinearLayout>
+
+  <LinearLayout
+      android:background="#1c2243"
+      android:layout_gravity="center"
+      android:layout_width="312dp"
+      android:layout_height="23dp"
+      android:orientation="horizontal"
+      >
+      <ImageView
+          android:src="@drawable/dian"
+          android:layout_gravity="center"
+          android:layout_width="11dp"
+          android:layout_height="16dp"/>
+      <TextView
+          android:id="@+id/twoping_zan"
+          android:layout_marginLeft="220dp"
+          android:layout_gravity="center"
+          android:layout_width="72dp"
+          android:layout_height="14dp"
+          android:textSize="10sp"
+          android:textColor="#ffffff"
+          android:text="等32人觉得很赞"
+          />
+  </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#141931"
+        ></LinearLayout>
+
+
+</LinearLayout>

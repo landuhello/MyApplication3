@@ -8,10 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.bean.StickBean;
+import com.example.myapplication.view.activity.Main3Activity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -19,6 +21,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /*
@@ -29,6 +32,8 @@ import butterknife.Unbinder;
     @BindView(R.id.xiangqing_dizhi)
     TextView xiangqingDizhi;
     Unbinder unbinder;
+    @BindView(R.id.one_paiqi)
+    Button onePaiqi;
     private String address;
 
     @Nullable
@@ -46,13 +51,15 @@ import butterknife.Unbinder;
         initview();
 
     }
-    @Subscribe(threadMode = ThreadMode.ASYNC,sticky = true)
-    public void dosticky(StickBean stickBean){
+
+    @Subscribe(threadMode = ThreadMode.ASYNC, sticky = true)
+    public void dosticky(StickBean stickBean) {
         address = stickBean.getAddress();
 
     }
+
     private void initview() {
-    xiangqingDizhi.setText(address);
+        xiangqingDizhi.setText(address);
     }
 
     @Override
@@ -60,5 +67,15 @@ import butterknife.Unbinder;
         super.onDestroyView();
         unbinder.unbind();
         EventBus.getDefault().unregister(this);
+    }
+
+    @OnClick(R.id.one_paiqi)
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.one_paiqi:
+                startActivity(new Intent(getContext(), Main3Activity.class));
+                break;
+        }
+
     }
 }
