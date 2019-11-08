@@ -17,10 +17,12 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
 import com.example.myapplication.model.bean.BannerBean;
+import com.example.myapplication.model.bean.EventBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.RmenBean;
 import com.example.myapplication.model.bean.ZhengBean;
 import com.example.myapplication.presenter.BannerPresenter;
+import com.example.myapplication.view.activity.DetailActivity;
 import com.example.myapplication.view.activity.GengduoActivity;
 import com.example.myapplication.view.activity.Main2Activity;
 import com.example.myapplication.view.activity.MainActivity;
@@ -31,6 +33,8 @@ import com.example.myapplication.view.inteface.MomInteface;
 import com.stx.xhb.xbanner.transformers.Transformer;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -106,6 +110,14 @@ import butterknife.Unbinder;
         reOne.setLayoutManager(linearLayoutManager);
         reOneAdapter = new ReOneAdapter(getActivity());
         reOne.setAdapter(reOneAdapter);
+        reOneAdapter.setOneRe(new ReOneAdapter.OneRe() {
+            @Override
+            public void ok(int i, int movieId) {
+                Intent intent = new Intent(getContext(), DetailActivity.class);
+                startActivity(intent);
+                EventBus.getDefault().postSticky(new EventBean(movieId));
+            }
+        });
 
         linearLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         reTwo.setLayoutManager(linearLayoutManager1);
@@ -118,6 +130,18 @@ import butterknife.Unbinder;
         reThree.setAdapter(reThreeAdapter);
 
         tvGeng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),GengduoActivity.class));
+            }
+        });
+        tvGengone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),GengduoActivity.class));
+            }
+        });
+        tvGengtwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),GengduoActivity.class));

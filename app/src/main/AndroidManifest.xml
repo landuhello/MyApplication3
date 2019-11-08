@@ -27,7 +27,8 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-        <activity android:name=".view.activity.GengduoActivity"></activity>
+        <activity android:name=".view.activity.GengduoActivity" />
+        <activity android:name=".view.activity.DetailActivity"></activity>
     </application>
 
 </manifest>

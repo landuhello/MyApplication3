@@ -1,6 +1,7 @@
 package com.example.myapplication.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.R;
 import com.example.myapplication.model.bean.ZhengBean;
+import com.example.myapplication.view.activity.DetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,7 @@ import java.util.List;
 public class ReOneAdapter extends RecyclerView.Adapter {
     private Context context;
     private List<ZhengBean.ResultBean> list1=new ArrayList<>();
+    private int movieId;
 
     public ReOneAdapter(Context context) {
         this.context = context;
@@ -38,15 +41,26 @@ public class ReOneAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        ViewHolder viewHolder1 = (ViewHolder) viewHolder;
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
+        final ViewHolder viewHolder1 = (ViewHolder) viewHolder;
         viewHolder1.tv_zhengyi.setText(list1.get(i).getName());
         viewHolder1.tv_fen.setText(list1.get(i).getScore()+""+"分");
         Glide.with(context)
                 .load(list1.get(i).getImageUrl())
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
                 .into(viewHolder1.iv_zhengyi);
+        movieId = list1.get(i).getMovieId();
+        viewHolder1.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (oneRe!=null){
+                    oneRe.ok(i,movieId);
+                }
+            }
+        });
     }
+
+
 
     public void getad(List<ZhengBean.ResultBean> result) {
         if (result!=null&&result.size()>0){
@@ -71,5 +85,14 @@ public class ReOneAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return list1.size();
+    }
+    private OneRe oneRe;
+
+    public interface OneRe{
+        void ok(int i,int movieId);
+    }
+
+    public void setOneRe(OneRe oneRe) {
+        this.oneRe = oneRe;
     }
 }

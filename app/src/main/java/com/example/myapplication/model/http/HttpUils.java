@@ -1,8 +1,11 @@
 package com.example.myapplication.model.http;
 
+import android.widget.Toast;
+
 import com.example.myapplication.model.api.Api;
 import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.RmenBean;
@@ -148,6 +151,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
                     @Override
                     public void accept(ZhengBean zhengBean) throws Exception {
                         callBack.success(zhengBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //查询电影详情
+    public void doDetail(int movieId, final CallBack callBack) {
+        api.Detail(movieId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<DetilBean>() {
+                    @Override
+                    public void accept(DetilBean detilBean) throws Exception {
+                        callBack.success(detilBean);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

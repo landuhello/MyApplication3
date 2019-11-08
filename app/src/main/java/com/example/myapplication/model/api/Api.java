@@ -2,6 +2,7 @@ package com.example.myapplication.model.api;
 
 import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.RmenBean;
@@ -15,7 +16,9 @@ import io.reactivex.Observable;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 /*
@@ -42,5 +45,8 @@ import retrofit2.http.QueryMap;
     //热门上映
     @GET("movie/v2/findHotMovieList?page=1&count=12")
     Observable<RmenBean> getrmen();
+    //查询电影详情
+    @GET("movieApi/movie/v2/findMoviesDetail")
+    Observable<DetilBean> Detail(@Query("movieId") int movieId);
 
 }
