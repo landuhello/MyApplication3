@@ -18,7 +18,7 @@ import com.example.myapplication.R;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View inflate = inflater.inflate(R.layout.xianglayoutone, container, false);
+        View inflate = inflater.inflate(R.layout.xianglayouttwo, container, false);
         return inflate;
     }
 }

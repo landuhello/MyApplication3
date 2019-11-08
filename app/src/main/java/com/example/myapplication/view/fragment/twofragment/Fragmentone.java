@@ -7,16 +7,20 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.StickBean;
 import com.example.myapplication.presenter.CinPresenter;
 import com.example.myapplication.view.activity.MovexiangqingMainActivity;
 import com.example.myapplication.view.adapter.Fragmentoneadapter;
 import com.example.myapplication.view.inteface.MomInteface;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.List;
@@ -68,14 +72,25 @@ import butterknife.Unbinder;
         fragmentoneRecy.setLayoutManager(manager);
         fragmentoneadapter = new Fragmentoneadapter();
         fragmentoneRecy.setAdapter(fragmentoneadapter);
-        fragmentoneadapter.setDomove(new Fragmentoneadapter.Domove() {
-            @Override
-            public void onclick(String name, String address) {
-                Intent intent = new Intent(getContext(), MovexiangqingMainActivity.class);
-                intent.putExtra("name",name);
-                intent.putExtra("address",address);
-                startActivity(intent);
 
+        fragmentoneadapter.setDomove(new Fragmentoneadapter.Domove() {
+
+            private int id1;
+            private String name1;
+            private String address1;
+
+            @Override
+            public void onclick(String name, String address, int id, int i) {
+                Intent intent = new Intent(getContext(), MovexiangqingMainActivity.class);
+                startActivity(intent);
+                address1 = result.get(i).getAddress();
+                name1 = result.get(i).getName();
+                id1 = result.get(i).getId();
+                //传值
+                EventBus.getDefault().postSticky(new StickBean(address1,name1,id1));
+                Log.i("hello",address1);
+                Log.i("hello1",name1);
+                Log.i("hello2",id1+"");
             }
         });
     }
