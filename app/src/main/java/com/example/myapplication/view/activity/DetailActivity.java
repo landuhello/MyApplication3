@@ -36,7 +36,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailActivity extends BaseActivity<DetailPresenter> implements MomInteface.IDetail {
+public class DetailActivity extends BaseActivity<DetailPresenter> {
 
     @BindView(R.id.iv_xiangone)
     ImageView ivXiangone;
@@ -95,15 +95,6 @@ public class DetailActivity extends BaseActivity<DetailPresenter> implements Mom
 
     }
 
-    @Override
-    public void ok(DetilBean detilBean) {
-
-    }
-
-    @Override
-    public void no(String msg) {
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

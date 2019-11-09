@@ -1,8 +1,18 @@
 package com.example.myapplication.model.http;
 
+import android.widget.Toast;
+
 import com.example.myapplication.model.api.Api;
+import com.example.myapplication.model.bean.AllcimBean;
+import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.DetilBean;
+import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
+import com.example.myapplication.model.bean.NearbyBean;
+import com.example.myapplication.model.bean.PaiqiBean;
+import com.example.myapplication.model.bean.RmenBean;
+import com.example.myapplication.model.bean.ZhengBean;
 
 
 import java.util.Map;
@@ -18,6 +28,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.HEAD;
 
 
 /*
@@ -67,6 +78,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
     }
+    //即将上映
+    public void getJi(final CallBack callBack){
+        api.getji()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<JiBean>() {
+                    @Override
+                    public void accept(JiBean jiBean) throws Exception {
+                        callBack.success(jiBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
     //推荐影院
     public void getcin(Map<String,Integer>map, final CallBack callBack){
         api.docin(map)
@@ -84,7 +112,135 @@ import retrofit2.converter.gson.GsonConverterFactory;
                     }
                 });
     }
+    //正在热映
+    public void getZheng(final CallBack callBack){
+        api.getzheng()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<ZhengBean>() {
+                    @Override
+                    public void accept(ZhengBean zhengBean) throws Exception {
+                        callBack.success(zhengBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //查询电影详情
+    public void doDetail(int movieId, final CallBack callBack) {
+        api.Detail(movieId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<DetilBean>() {
+                    @Override
+                    public void accept(DetilBean detilBean) throws Exception {
+                        callBack.success(detilBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+
+    }
+    //Banner
+    public void getban(final CallBack callBack){
+        api.getBan()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<BannerBean>() {
+                    @Override
+                    public void accept(BannerBean bannerBean) throws Exception {
+                        callBack.success(bannerBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //热门上映
+    public void getRmen(final CallBack callBack){
+        api.getrmen()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<RmenBean>() {
+                    @Override
+                    public void accept(RmenBean rmenBean) throws Exception {
+                        callBack.success(rmenBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+
+    }
+    //附近影院
+    public void getnear(Map<String,String>map, Map<String,Integer>nearmap, final CallBack callBack) {
+        api.donear(map, nearmap)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<NearbyBean>() {
+                    @Override
+                    public void accept(NearbyBean nearbyBean) throws Exception {
+                        callBack.success(nearbyBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+
+    }
+        //影院用户评论
+        public void getall( int  cinemaId,Map<String,Integer> map,final CallBack Callback){
+            api.doall(cinemaId, map)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<AllcimBean>() {
+                        @Override
+                        public void accept(AllcimBean allcimBean) throws Exception {
+                            Callback.success(allcimBean);
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            throwable.printStackTrace();
+                        }
+                    });
+        }
+
+
+            public void getpaiqi(int cinemaId, Map<String,Integer> map,final CallBack Callback){
+                api.dopaiqi(cinemaId, map)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<PaiqiBean>() {
+                            @Override
+                            public void accept(PaiqiBean paiqiBean) throws Exception {
+                                Callback.success(paiqiBean);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                throwable.printStackTrace();
+                            }
+                        });
+            }
+
+
+
+
     public interface CallBack<A>{
         void success(A a);
     }
+
 }
