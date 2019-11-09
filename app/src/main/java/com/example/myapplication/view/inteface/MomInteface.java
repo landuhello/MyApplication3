@@ -1,11 +1,8 @@
 package com.example.myapplication.view.inteface;
 
 import com.example.myapplication.base.Baseinteface;
-import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.LoginBean;
-import com.example.myapplication.model.bean.NearbyBean;
-import com.example.myapplication.model.bean.PaiqiBean;
 
 /*
  *@Auther:刘炳良
@@ -19,17 +16,5 @@ import com.example.myapplication.model.bean.PaiqiBean;
      //推荐影院
      interface docin extends Baseinteface{
          void success(CinemaBean bean);
-     }
-     //附近影院
-    interface donear extends Baseinteface{
-         void success(NearbyBean nearbyBean);
-     }
-     //影院评论
-     interface doallcin extends Baseinteface{
-         void success(AllcimBean allcimBean);
-     }
-     //影院排期
-    interface dopaiqi extends Baseinteface{
-         void success(PaiqiBean bean);
      }
 }
