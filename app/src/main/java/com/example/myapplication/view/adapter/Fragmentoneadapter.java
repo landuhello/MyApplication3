@@ -21,6 +21,10 @@ import java.util.List;
  *@Description:功能
  * */public class Fragmentoneadapter extends RecyclerView.Adapter<Fragmentoneadapter.Viewholder> {
     private List<CinemaBean.ResultBean> result=new ArrayList<>();
+    private String name;
+    private String address;
+    private int id;
+
 
     public void setResult(List<CinemaBean.ResultBean> result) {
         this.result = result;
@@ -35,10 +39,21 @@ import java.util.List;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
+    public void onBindViewHolder(@NonNull Viewholder viewholder, final int i) {
         viewholder.textView.setText(result.get(i).getName());
         viewholder.textView1.setText(result.get(i).getAddress());
         Glide.with(viewholder.itemView.getContext()).load(result.get(i).getLogo()).into(viewholder.imageView);
+        name = result.get(i).getName();
+        address = result.get(i).getAddress();
+        id = result.get(i).getId();
+        viewholder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (domove!=null){
+                    domove.onclick(name, address, id,i);
+                }
+            }
+        });
     }
 
     @Override
@@ -63,5 +78,16 @@ import java.util.List;
             textView = itemView.findViewById(R.id.one_te);
             textView1 = itemView.findViewById(R.id.one_te1);
         }
+    }
+    //条目点击接口回调
+    private Domove domove;
+
+    public interface Domove{
+        void onclick(String name,String address,int id,int i);
+    }
+
+
+    public void setDomove(Domove domove) {
+        this.domove = domove;
     }
 }

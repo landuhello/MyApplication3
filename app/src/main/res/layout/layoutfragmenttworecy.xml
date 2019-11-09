@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#141931"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="312dp"
+        android:layout_height="121dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="#141931"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/two_im"
+            android:layout_width="84dp"
+            android:layout_height="101dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/two_te"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ont_te1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:text="悲伤逆流成河"
+                android:textColor="#deffffff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/two_te1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:text="导演：落落"
+                android:textColor="#deffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/two_te2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="end"
+                android:text="主演：井柏然  宋佳  马思纯  秦昊"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="评分：9.4分"
+                    android:textColor="#ffffff" />
+
+                XML
+
+                <Button
+                    android:layout_marginTop="5dp"
+                    android:layout_width="45dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="10dp"
+                    android:background="#e8185e"
+                    android:text="购票"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+                XML
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
