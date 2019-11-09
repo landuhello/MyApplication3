@@ -5,58 +5,91 @@
     android:background="#141931"
     android:orientation="vertical"
     >
+
     <LinearLayout
-        android:layout_marginTop="5dp"
+        android:layout_width="312dp"
+        android:layout_height="121dp"
         android:layout_gravity="center_horizontal"
-        android:layout_width="320dp"
-        android:layout_height="98dp"
-        android:orientation="horizontal"
-        android:background="#1c2243"
-        >
+        android:layout_marginTop="10dp"
+        android:background="#141931"
+        android:orientation="horizontal">
+
         <ImageView
-            android:layout_marginLeft="6dp"
             android:id="@+id/two_im"
+            android:layout_width="84dp"
+            android:layout_height="101dp"
             android:layout_gravity="center_vertical"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:layout_marginLeft="6dp" />
 
         <LinearLayout
-            android:layout_marginLeft="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
+
             <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
                 android:id="@+id/two_te"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/ont_te1"
-                android:text="GV影城"
-                android:textColor="#deffffff"
-                android:textSize="14sp" />
-            <TextView
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
+                android:text="悲伤逆流成河"
+                android:textColor="#deffffff"
+                android:textSize="14sp" />
+
+            <TextView
                 android:id="@+id/two_te1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="海淀区清河中街68号华润五彩城购物中心东区7层"
+                android:layout_marginLeft="5dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:text="导演：落落"
                 android:textColor="#deffffff"
                 android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/two_te2"
-                android:layout_marginLeft="186dp"
-                android:layout_marginRight="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#ffffff"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
                 android:gravity="end"
-                android:text="2.3km"
-                />
+                android:text="主演：井柏然  宋佳  马思纯  秦昊"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="评分：9.4分"
+                    android:textColor="#ffffff" />
+
+                XML
+
+                <Button
+                    android:layout_marginTop="5dp"
+                    android:layout_width="45dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="10dp"
+                    android:background="#e8185e"
+                    android:text="购票"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+                XML
+
+            </RelativeLayout>
         </LinearLayout>
 
     </LinearLayout>
