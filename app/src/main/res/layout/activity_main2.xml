@@ -7,47 +7,120 @@
     android:orientation="vertical"
     android:background="#1c2243"
     tools:context=".view.activity.Main2Activity">
-    <android.support.v4.view.ViewPager
+    <com.example.myapplication.view.activity.CustomViewPager
+        android:id="@+id/vp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/vp"
-        android:layout_weight="8"
-        ></android.support.v4.view.ViewPager>
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/rgoup"
+        ></com.example.myapplication.view.activity.CustomViewPager>
+    <LinearLayout
+        android:background="#141931"
         android:orientation="horizontal"
-        android:background="#1c2243"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        >
-        <RadioButton
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:id="@+id/rbut1"
-            android:checked="true"
-            android:button="@null"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/shouyeone"
-            />
-        <RadioButton
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:id="@+id/rbut2"
-            android:button="@null"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="60dp"
-            android:background="@drawable/shouyetwo"
-            />
-        <RadioButton
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:id="@+id/rbut3"
-            android:button="@null"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="60dp"
-            android:background="@drawable/shouyethree"
-            />
-    </RadioGroup>
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <LinearLayout
+            android:id="@+id/lay_one"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/image_movei_dj"
+                android:background="@mipmap/movie"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <LinearLayout
+                android:id="@+id/lin_movei"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/bagselect"
+                android:layout_width="108dp"
+                android:layout_height="36dp">
+
+                <ImageView
+                    android:background="@drawable/yingpian"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#e8185e"
+                    android:textSize="14dp"
+                    android:text="电影"
+                    android:layout_width="28dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lay_two"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+
+                android:id="@+id/image_cinem_dj"
+                android:background="@mipmap/cinema"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/lin_cinem"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/bagselect"
+                android:layout_width="108dp"
+                android:layout_height="36dp">
+
+                <ImageView
+                    android:background="@drawable/shape"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#e8185e"
+                    android:textSize="14dp"
+                    android:text="影院"
+                    android:layout_width="28dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lay_swe"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/image_myy_dj"
+                android:background="@drawable/myone"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/lin_myy"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/bagselect"
+                android:layout_width="108dp"
+                android:layout_height="36dp">
+
+                <ImageView
+                    android:background="@drawable/my"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#e8185e"
+                    android:textSize="14dp"
+                    android:text="我的"
+                    android:layout_width="28dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>

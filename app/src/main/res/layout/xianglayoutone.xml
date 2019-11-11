@@ -23,7 +23,7 @@
             android:layout_marginLeft="15dp"
             android:textColor="#deffffff"
             android:layout_width="192dp"
-            android:layout_height="17dp"
+            android:layout_height="wrap_content"
             android:text="海淀区悦秀路99号二层"
             />
     </LinearLayout>

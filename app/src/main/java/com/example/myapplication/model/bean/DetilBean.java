@@ -50,6 +50,7 @@ public class DetilBean {
         public List<String> posterList;
         public List<ShortFilmListBean> shortFilmList;
 
+
         public static class MovieActorBean {
             /**
              * name : 周润发

@@ -5,15 +5,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  *@Auther:刘炳良
  *@Date: 时间
  *@Description:功能
  * */public class FragmentAdapter extends FragmentPagerAdapter {
-    private ArrayList<Fragment> list;
+    private List<Fragment> list;
 
-    public FragmentAdapter(FragmentManager fm, ArrayList<Fragment> list) {
+    public FragmentAdapter(FragmentManager fm, List<Fragment> list) {
         super(fm);
         this.list = list;
     }

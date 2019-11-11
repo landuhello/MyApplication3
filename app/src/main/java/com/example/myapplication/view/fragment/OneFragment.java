@@ -3,6 +3,7 @@ package com.example.myapplication.view.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,14 +25,12 @@ import com.example.myapplication.model.bean.ZhengBean;
 import com.example.myapplication.presenter.BannerPresenter;
 import com.example.myapplication.view.activity.DetailActivity;
 import com.example.myapplication.view.activity.GengduoActivity;
-import com.example.myapplication.view.activity.Main2Activity;
-import com.example.myapplication.view.activity.MainActivity;
 import com.example.myapplication.view.adapter.ReOneAdapter;
 import com.example.myapplication.view.adapter.ReThreeAdapter;
 import com.example.myapplication.view.adapter.ReTwoAdapter;
 import com.example.myapplication.view.inteface.MomInteface;
-import com.stx.xhb.xbanner.transformers.Transformer;
 import com.youth.banner.Banner;
+import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
 
 import org.greenrobot.eventbus.EventBus;
@@ -95,6 +94,8 @@ import butterknife.Unbinder;
     Unbinder unbinder;
     @BindView(R.id.ban)
     Banner ban;
+    @BindView(R.id.net)
+    NestedScrollView net;
     private LinearLayoutManager linearLayoutManager;
     private ReOneAdapter reOneAdapter;
     private LinearLayoutManager linearLayoutManager1;
@@ -132,19 +133,19 @@ import butterknife.Unbinder;
         tvGeng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),GengduoActivity.class));
+                startActivity(new Intent(getContext(), GengduoActivity.class));
             }
         });
         tvGengone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),GengduoActivity.class));
+                startActivity(new Intent(getContext(), GengduoActivity.class));
             }
         });
         tvGengtwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),GengduoActivity.class));
+                startActivity(new Intent(getContext(), GengduoActivity.class));
             }
         });
 
@@ -180,7 +181,7 @@ import butterknife.Unbinder;
         ban.isAutoPlay(true);
         ban.setDelayTime(3000);
         ban.start();
-        ban.setBannerAnimation(com.youth.banner.Transformer.Accordion);
+        ban.setBannerAnimation(Transformer.Accordion);
         f.setZheng();
     }
 
