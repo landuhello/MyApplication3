@@ -73,7 +73,6 @@
                     android:text="评分：9.4分"
                     android:textColor="#ffffff" />
 
-                XML
 
                 <Button
                     android:layout_marginTop="5dp"
@@ -87,7 +86,6 @@
                     android:textColor="#ffffff"
                     android:textSize="12sp" />
 
-                XML
 
             </RelativeLayout>
         </LinearLayout>

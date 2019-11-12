@@ -26,7 +26,7 @@ import java.util.List;
 public class ReOneAdapter extends RecyclerView.Adapter {
     private Context context;
     private List<ZhengBean.ResultBean> list1=new ArrayList<>();
-    private int movieId;
+
 
     public ReOneAdapter(Context context) {
         this.context = context;
@@ -49,8 +49,8 @@ public class ReOneAdapter extends RecyclerView.Adapter {
                 .load(list1.get(i).getImageUrl())
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
                 .into(viewHolder1.iv_zhengyi);
-        movieId = list1.get(i).getMovieId();
-        viewHolder1.itemView.setOnClickListener(new View.OnClickListener() {
+        final int movieId = list1.get(i).getMovieId();
+        viewHolder1.iv_zhengyi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (oneRe!=null){

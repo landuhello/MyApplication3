@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Main2Activity extends AppCompatActivity implements View.OnClickListener{
+public class  Main2Activity extends AppCompatActivity implements View.OnClickListener{
 
 
     @BindView(R.id.image_movei_dj)

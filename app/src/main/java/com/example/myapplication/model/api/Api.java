@@ -58,7 +58,7 @@ import retrofit2.http.QueryMap;
     @GET("movie/v2/findHotMovieList?page=1&count=12")
     Observable<RmenBean> getrmen();
     //查询电影详情
-    @GET("movieApi/movie/v2/findMoviesDetail")
+    @GET("movie/v2/findMoviesDetail")
     Observable<DetilBean> Detail(@Query("movieId") int movieId);
 
 }

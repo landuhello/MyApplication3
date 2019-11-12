@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 
 public abstract class BaseFragment<F extends BasePresenter> extends Fragment implements Baseinteface {
@@ -51,5 +52,6 @@ public abstract class BaseFragment<F extends BasePresenter> extends Fragment imp
         super.onDestroy();
         f.unbind();
         bind.unbind();
+
     }
 }

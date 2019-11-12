@@ -107,7 +107,8 @@ import butterknife.Unbinder;
     @Override
     protected void initData() {
         f.setBanner();
-        linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         reOne.setLayoutManager(linearLayoutManager);
         reOneAdapter = new ReOneAdapter(getActivity());
         reOne.setAdapter(reOneAdapter);
@@ -115,8 +116,8 @@ import butterknife.Unbinder;
             @Override
             public void ok(int i, int movieId) {
                 Intent intent = new Intent(getContext(), DetailActivity.class);
+                intent.putExtra("movieId",movieId);
                 startActivity(intent);
-                EventBus.getDefault().postSticky(new EventBean(movieId));
             }
         });
 
@@ -125,7 +126,8 @@ import butterknife.Unbinder;
         reTwoAdapter = new ReTwoAdapter(getContext());
         reTwo.setAdapter(reTwoAdapter);
 
-        linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        linearLayoutManager2 = new LinearLayoutManager(getContext());
+        linearLayoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
         reThree.setLayoutManager(linearLayoutManager2);
         reThreeAdapter = new ReThreeAdapter(getContext());
         reThree.setAdapter(reThreeAdapter);

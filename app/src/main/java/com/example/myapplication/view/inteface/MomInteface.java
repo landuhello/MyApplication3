@@ -45,6 +45,7 @@ import com.example.myapplication.model.bean.ZhengBean;
         void reyji(JiBean jiBean);
         void remen(RmenBean rmenBean);
     }
+    //电影详情
     interface IDetail extends Baseinteface{
          void ok(DetilBean detilBean);
          void no(String msg);
