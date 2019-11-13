@@ -29,7 +29,7 @@ import java.util.List;
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.paiqilayoutone, viewGroup, false);
+        View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.paiqiitemlayout, viewGroup, false);
         Viewholder viewholder = new Viewholder(inflate);
         return viewholder;
     }
@@ -37,9 +37,12 @@ import java.util.List;
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         viewholder.textView.setText(result.get(i).getName());
-//        viewholder.textView1.setText(result.get(i).getAddress());
-//        viewholder.textView2.setText(Double.valueOf(result.get(i).getDistance()/1000)+"km");
-//        Glide.with(viewholder.itemView.getContext()).load(result.get(i).getLogo()).into(viewholder.imageView);
+        viewholder.textView1.setText("导演："+result.get(i).getDirector());
+        viewholder.textView2.setText("主演："+result.get(i).getStarring());
+        viewholder.textView3.setText("评分："+result.get(i).getScore()+"分");
+        Glide.with(viewholder.itemView.getContext()).load(result.get(i).getImageUrl()).into(viewholder.imageView);
+
+
     }
 
     @Override
@@ -58,13 +61,15 @@ import java.util.List;
         TextView textView;
         TextView textView1;
         TextView textView2;
+        TextView textView3;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.two_im);
-            textView = itemView.findViewById(R.id.two_te);
-            textView1 = itemView.findViewById(R.id.two_te1);
-            textView2 = itemView.findViewById(R.id.two_te2);
+            imageView = itemView.findViewById(R.id.paiqi_im);
+            textView = itemView.findViewById(R.id.paiqi_te1);
+            textView1 = itemView.findViewById(R.id.paiqi_te2);
+            textView2 = itemView.findViewById(R.id.paiqi_te3);
+            textView3 = itemView.findViewById(R.id.paiqi_te4);
         }
     }
 }

@@ -4,13 +4,16 @@ import com.example.myapplication.base.Baseinteface;
 
 import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
+import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.NearbyBean;
 import com.example.myapplication.model.bean.PaiqiBean;
+import com.example.myapplication.model.bean.QuyuchaxBean;
 import com.example.myapplication.model.bean.RmenBean;
+import com.example.myapplication.model.bean.ToolBean;
 import com.example.myapplication.model.bean.ZhengBean;
 
 /*
@@ -50,5 +53,16 @@ import com.example.myapplication.model.bean.ZhengBean;
          void ok(DetilBean detilBean);
          void no(String msg);
     }
-
+    //地址
+    interface docindizhi extends Baseinteface{
+         void success(CindizhiBean bean);
+    }
+    //查询区域列表
+    interface dotool extends Baseinteface{
+         void success(ToolBean toolBean);
+    }
+    //区域查询
+    interface doquyucx extends Baseinteface{
+         void success(QuyuchaxBean bean);
+    }
 }

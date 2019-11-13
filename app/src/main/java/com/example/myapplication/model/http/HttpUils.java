@@ -11,7 +11,9 @@ import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.NearbyBean;
 import com.example.myapplication.model.bean.PaiqiBean;
+import com.example.myapplication.model.bean.QuyuchaxBean;
 import com.example.myapplication.model.bean.RmenBean;
+import com.example.myapplication.model.bean.ToolBean;
 import com.example.myapplication.model.bean.ZhengBean;
 
 
@@ -236,9 +238,41 @@ import retrofit2.http.HEAD;
                         });
             }
 
+    //查询区域列表
+    public void dotool(final CallBack callBack){
+        api.dotool()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<ToolBean>() {
+                    @Override
+                    public void accept(ToolBean toolBean) throws Exception {
+                        callBack.success(toolBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                       throwable.printStackTrace();
+                    }
+                });
+    }
 
-
-
+    //区域查询电影院列表
+    public void doquyucx(int regionId, final CallBack callBack){
+        api.doquyuchax(regionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<QuyuchaxBean>() {
+                    @Override
+                    public void accept(QuyuchaxBean quyuchaxBean) throws Exception {
+                        callBack.success(quyuchaxBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
     public interface CallBack<A>{
         void success(A a);
     }

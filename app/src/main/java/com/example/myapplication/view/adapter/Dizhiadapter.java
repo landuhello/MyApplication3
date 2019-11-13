@@ -68,13 +68,12 @@ import java.util.List;
         }
     }
     //条目点击接口回调
-    private Fragmenttwofujinadapter.Onclicklisten onclicklisten;
+    private Onclicklisten onclicklisten;
 
     public interface Onclicklisten{
         void success(int id,int i);
     }
-
-    public void setOnclicklisten(Fragmenttwofujinadapter.Onclicklisten onclicklisten) {
+    public void setOnclicklisten(Onclicklisten onclicklisten) {
         this.onclicklisten = onclicklisten;
     }
 }

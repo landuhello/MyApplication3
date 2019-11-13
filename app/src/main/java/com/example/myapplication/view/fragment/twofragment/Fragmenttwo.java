@@ -1,5 +1,6 @@
 package com.example.myapplication.view.fragment.twofragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,9 +13,13 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.bean.NearbyBean;
+import com.example.myapplication.model.bean.StickBean;
 import com.example.myapplication.presenter.NearPresenter;
+import com.example.myapplication.view.activity.MovexiangqingMainActivity;
 import com.example.myapplication.view.adapter.Fragmenttwofujinadapter;
 import com.example.myapplication.view.inteface.MomInteface;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.List;
@@ -68,6 +73,22 @@ import butterknife.Unbinder;
         fragmenttwoRecy.setLayoutManager(manager);
         fragmenttwofujinadapter = new Fragmenttwofujinadapter();
         fragmenttwoRecy.setAdapter(fragmenttwofujinadapter);
+        fragmenttwofujinadapter.setOnclicklisten(new Fragmenttwofujinadapter.Onclicklisten() {
+
+            private String name;
+            private String address;
+            private int id1;
+
+            @Override
+            public void success(int id, int i) {
+                Intent intent = new Intent(getContext(), MovexiangqingMainActivity.class);
+                startActivity(intent);
+                address = result.get(i).getAddress();
+                name = result.get(i).getName();
+                id1 = result.get(i).getId();
+                EventBus.getDefault().postSticky(new StickBean(address,name,id1));
+            }
+        });
     }
     @Override
     public void success(NearbyBean nearbyBean) {

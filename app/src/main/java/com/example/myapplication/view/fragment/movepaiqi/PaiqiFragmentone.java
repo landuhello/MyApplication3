@@ -1,20 +1,31 @@
 package com.example.myapplication.view.fragment.movepaiqi;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.bean.PaiqiBean;
+import com.example.myapplication.model.bean.StickBean;
+import com.example.myapplication.presenter.PaiqiPresenter;
+import com.example.myapplication.view.adapter.FragmentpaiqiAdapter;
 import com.example.myapplication.view.inteface.MomInteface;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,12 +41,17 @@ import butterknife.Unbinder;
     RecyclerView paiqi;
     Unbinder unbinder;
     private List<PaiqiBean.ResultBean> result;
+    private PaiqiPresenter paiqiPresenter;
+
+    private FragmentpaiqiAdapter fragmentpaiqiAdapter;
+    private int id;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.paiqilayoutone, container, false);
         unbinder = ButterKnife.bind(this, inflate);
+
         return inflate;
     }
 
@@ -46,20 +62,33 @@ import butterknife.Unbinder;
     }
 
     private void initview() {
+        //sp存值
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("bw.db", Context.MODE_MULTI_PROCESS);
+        id = sharedPreferences.getInt("id", 0);
+        paiqiPresenter = new PaiqiPresenter();
+        paiqiPresenter.bind(this);
+        Map<String,Integer>map=new HashMap<>();
+        map.put("page",1);
+        map.put("count",10);
+        paiqiPresenter.dopaiqi(id,map);
+        Log.i("aaaa",id+"");
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         paiqi.setLayoutManager(manager);
-
+        fragmentpaiqiAdapter = new FragmentpaiqiAdapter();
+        paiqi.setAdapter(fragmentpaiqiAdapter);
     }
 
     @Override
     public void success(PaiqiBean bean) {
         result = bean.getResult();
-
+        fragmentpaiqiAdapter.setResult(result);
+        fragmentpaiqiAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        paiqiPresenter.unbind();
     }
 }

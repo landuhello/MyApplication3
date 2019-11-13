@@ -113,7 +113,8 @@ import butterknife.Unbinder;
     @OnClick(R.id.two_paiqi)
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.one_paiqi:
+            case R.id.two_paiqi:
+
                 startActivity(new Intent(getContext(), Main3Activity.class));
                 break;
         }

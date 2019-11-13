@@ -1,11 +1,15 @@
 package com.example.myapplication.view.activity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +27,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MovexiangqingMainActivity extends AppCompatActivity {
 
@@ -72,7 +77,11 @@ public class MovexiangqingMainActivity extends AppCompatActivity {
         address = stickBean.getAddress();
         id = stickBean.getId();
         xiangqingText.setText(name);
-        Log.i("aaa", name);
+        SharedPreferences sharedPreferences = getSharedPreferences("bw.db", Context.MODE_MULTI_PROCESS);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putInt("id", id);
+        edit.commit();
+        Log.i("aaa", id + "");
     }
 
     @Override
@@ -85,5 +94,14 @@ public class MovexiangqingMainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
+    }
+
+    @OnClick(R.id.fanhui)
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.fanhui:
+                MovexiangqingMainActivity.this.finish();
+                break;
+        }
     }
 }

@@ -2,13 +2,16 @@ package com.example.myapplication.model.api;
 
 import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
+import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.NearbyBean;
 import com.example.myapplication.model.bean.PaiqiBean;
+import com.example.myapplication.model.bean.QuyuchaxBean;
 import com.example.myapplication.model.bean.RmenBean;
+import com.example.myapplication.model.bean.ToolBean;
 import com.example.myapplication.model.bean.ZhengBean;
 
 import java.util.Map;
@@ -60,5 +63,10 @@ import retrofit2.http.QueryMap;
     //查询电影详情
     @GET("movie/v2/findMoviesDetail")
     Observable<DetilBean> Detail(@Query("movieId") int movieId);
-
+    //查询区域列表
+    @GET("tool/v2/findRegionList")
+    Observable<ToolBean> dotool();
+    //区域查询电影院
+    @GET("cinema/v2/findCinemaByRegion")
+    Observable<QuyuchaxBean> doquyuchax (@Query("regionId") int regionId);
 }
