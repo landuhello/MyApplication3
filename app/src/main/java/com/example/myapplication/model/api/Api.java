@@ -4,20 +4,26 @@ import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.CinemadetailsBean;
+import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
+import com.example.myapplication.model.bean.MhmoveyBean;
 import com.example.myapplication.model.bean.NearbyBean;
 import com.example.myapplication.model.bean.PaiqiBean;
 import com.example.myapplication.model.bean.QuyuchaxBean;
+import com.example.myapplication.model.bean.RegBean;
 import com.example.myapplication.model.bean.RmenBean;
 import com.example.myapplication.model.bean.ToolBean;
+import com.example.myapplication.model.bean.YanzhengBean;
 import com.example.myapplication.model.bean.ZhengBean;
 
 import java.util.Map;
 
 
 import io.reactivex.Observable;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -34,6 +40,17 @@ import retrofit2.http.QueryMap;
     @FormUrlEncoded
     @POST("user/v2/login")
     Observable<LoginBean> dologin(@FieldMap Map<String, String> map);
+    //注册
+    @FormUrlEncoded
+    @POST("user/v2/register")
+    Observable<RegBean> doreg(@Field("nickName")String nickName, @Field("pwd") String pwd,
+                              @Field("email")String email,
+                              @Field("code")String code
+                              );
+    //发送验证码
+    @FormUrlEncoded
+    @POST("user/v2/sendOutEmailCode")
+    Observable<YanzhengBean> doyan(@Field("email")String email);
     //推荐影院
     @GET("cinema/v1/findRecommendCinemas")
     Observable<CinemaBean> docin(@QueryMap Map<String,Integer> map);
@@ -69,4 +86,13 @@ import retrofit2.http.QueryMap;
     //区域查询电影院
     @GET("cinema/v2/findCinemaByRegion")
     Observable<QuyuchaxBean> doquyuchax (@Query("regionId") int regionId);
+    //日期
+    @GET("tool/v2/findDateList")
+    Observable<DayBean> doday();
+    //电影院明细
+    @GET("cinema/v1/findCinemaInfo")
+    Observable<CinemadetailsBean> domx(@Query("cinemaId")int cinemaId);
+    //模糊查询电影院
+    @GET("cinema/v1/findAllCinemas")
+    Observable<MhmoveyBean> domhmovey(@QueryMap Map<String,Integer>map,@Query("cinemaName")String cinemaName);
 }

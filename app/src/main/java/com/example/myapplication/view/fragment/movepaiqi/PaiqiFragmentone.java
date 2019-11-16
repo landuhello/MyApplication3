@@ -1,5 +1,6 @@
 package com.example.myapplication.view.fragment.movepaiqi;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -35,7 +36,9 @@ import butterknife.Unbinder;
  *@Auther:刘炳良
  *@Date: 时间
  *@Description:功能
- * */public class PaiqiFragmentone extends Fragment implements MomInteface.dopaiqi {
+ * */
+@SuppressLint("ValidFragment")
+public class PaiqiFragmentone extends Fragment implements MomInteface.dopaiqi {
 
     @BindView(R.id.paiqi)
     RecyclerView paiqi;
@@ -45,6 +48,14 @@ import butterknife.Unbinder;
 
     private FragmentpaiqiAdapter fragmentpaiqiAdapter;
     private int id;
+    int page;
+
+
+    @SuppressLint("ValidFragment")
+    public PaiqiFragmentone(int i) {
+        this.page = i;
+
+    }
 
     @Nullable
     @Override
@@ -68,7 +79,7 @@ import butterknife.Unbinder;
         paiqiPresenter = new PaiqiPresenter();
         paiqiPresenter.bind(this);
         Map<String,Integer>map=new HashMap<>();
-        map.put("page",1);
+        map.put("page",page);
         map.put("count",10);
         paiqiPresenter.dopaiqi(id,map);
         Log.i("aaaa",id+"");

@@ -3,7 +3,7 @@
     android:layout_width="158dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#141931"
+    android:background="#1c2243"
     >
     <TextView
         android:layout_marginTop="10dp"

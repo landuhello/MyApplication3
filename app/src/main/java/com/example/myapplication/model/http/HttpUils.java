@@ -6,14 +6,19 @@ import com.example.myapplication.model.api.Api;
 import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.CinemadetailsBean;
+import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
+import com.example.myapplication.model.bean.MhmoveyBean;
 import com.example.myapplication.model.bean.NearbyBean;
 import com.example.myapplication.model.bean.PaiqiBean;
 import com.example.myapplication.model.bean.QuyuchaxBean;
+import com.example.myapplication.model.bean.RegBean;
 import com.example.myapplication.model.bean.RmenBean;
 import com.example.myapplication.model.bean.ToolBean;
+import com.example.myapplication.model.bean.YanzhengBean;
 import com.example.myapplication.model.bean.ZhengBean;
 
 
@@ -265,6 +270,93 @@ import retrofit2.http.HEAD;
                     @Override
                     public void accept(QuyuchaxBean quyuchaxBean) throws Exception {
                         callBack.success(quyuchaxBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //日期
+    public void doday(final CallBack callBack){
+        api.doday()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<DayBean>() {
+                    @Override
+                    public void accept(DayBean dayBean) throws Exception {
+                        callBack.success(dayBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //电影院明细
+    public void domx(int cinemaId, final CallBack callBack){
+        api.domx(cinemaId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<CinemadetailsBean>() {
+                    @Override
+                    public void accept(CinemadetailsBean cinemadetailsBean) throws Exception {
+                        callBack.success(cinemadetailsBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //模糊查询电影院
+    public void domhmovey(Map<String,Integer>map, String cinemaName, final CallBack callBack){
+        api.domhmovey(map,cinemaName)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<MhmoveyBean>() {
+                    @Override
+                    public void accept(MhmoveyBean mhmoveyBean) throws Exception {
+                        callBack.success(mhmoveyBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+
+    }
+    //注册
+    public void doreg(String nickName, String pwd, String email, String code, final CallBack callBack){
+        api.doreg(nickName,pwd,email,code)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<RegBean>() {
+                    @Override
+                    public void accept(RegBean regBean) throws Exception {
+                        callBack.success(regBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                       throwable.printStackTrace();
+                    }
+                });
+
+    }
+    //验证码
+    public void docode(String email, final CallBack callBack){
+        api.doyan(email)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<YanzhengBean>() {
+                    @Override
+                    public void accept(YanzhengBean yanzhengBean) throws Exception {
+                        callBack.success(yanzhengBean);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

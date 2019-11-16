@@ -44,11 +44,11 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="30dp"
             android:src="@drawable/emptyheart" />
         <TextView
             android:id="@+id/xiangqing_text"
-            android:layout_width="182dp"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -65,41 +65,29 @@
         >
         <TextView
 
+            android:id="@+id/yanjing"
             android:layout_marginLeft="16dp"
             android:textColor="#d3af56"
-            android:layout_width="60dp"
+            android:layout_width="206dp"
             android:layout_height="21dp"
             android:text="3D眼镜"
             />
-        <TextView
-            android:layout_marginLeft="16dp"
-            android:textColor="#d3af56"
-            android:layout_width="68dp"
-            android:layout_height="21dp"
 
-            android:text="儿童优惠"
-            />
-        <TextView
-            android:layout_marginLeft="16dp"
-            android:textColor="#d3af56"
-            android:layout_width="48dp"
-            android:layout_height="21dp"
-            android:text="4K厅"
-            />
         <ImageView
-            android:layout_marginLeft="40dp"
+
+            android:layout_marginLeft="5dp"
             android:src="@drawable/group_10"
             android:layout_width="13dp"
             android:layout_height="16dp" />
+
         <TextView
-            android:layout_marginLeft="5dp"
             android:layout_width="49dp"
             android:layout_height="17dp"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:text="到这里去"
             android:layout_gravity="center_vertical"
-            />
+            android:layout_marginLeft="5dp"
+            android:text="到这里去"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="20dp"

@@ -40,6 +40,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp" />
         <TextView
+            android:id="@+id/xiangqing_phone"
             android:layout_marginLeft="15dp"
             android:textSize="12sp"
             android:textColor="#deffffff"
@@ -49,6 +50,12 @@
 
             />
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ScrollView>
     <LinearLayout
         android:background="#141931"
         android:layout_width="match_parent"
@@ -66,36 +73,38 @@
 
             />
         <TextView
+            android:lineSpacingExtra="4dp"
+            android:id="@+id/xiangqing_luxian"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="24dp"
             android:textColor="#deffffff"
             android:textSize="12sp"
             android:layout_width="312dp"
-            android:layout_height="51dp"
+            android:layout_height="wrap_content"
             android:text="地铁：
 13号线西二旗站A口出，换乘运通509路或362路公交车软件园南站下车，过马路对面；"
 
             />
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="24dp"
-            android:textColor="#deffffff"
-            android:textSize="12sp"
-            android:layout_width="312dp"
-            android:layout_height="34dp"
-            android:text="公交：
-乘坐362、429、592、运通509到软件园南站下车"
-            />
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="24dp"
-            android:textColor="#deffffff"
-            android:textSize="12sp"
-            android:layout_width="312dp"
-            android:layout_height="51dp"
-            android:text="自驾：
-可沿北五环到上地环岛，向北与第二环岛（上地七街），向西500米左右即到"
-            />
+<!--        <TextView-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginLeft="24dp"-->
+<!--            android:textColor="#deffffff"-->
+<!--            android:textSize="12sp"-->
+<!--            android:layout_width="312dp"-->
+<!--            android:layout_height="34dp"-->
+<!--            android:text="公交：-->
+<!--乘坐362、429、592、运通509到软件园南站下车"-->
+<!--            />-->
+<!--        <TextView-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginLeft="24dp"-->
+<!--            android:textColor="#deffffff"-->
+<!--            android:textSize="12sp"-->
+<!--            android:layout_width="312dp"-->
+<!--            android:layout_height="51dp"-->
+<!--            android:text="自驾：-->
+<!--可沿北五环到上地环岛，向北与第二环岛（上地七街），向西500米左右即到"-->
+<!--            />-->
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">

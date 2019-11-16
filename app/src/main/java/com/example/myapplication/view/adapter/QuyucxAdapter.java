@@ -19,6 +19,7 @@ import java.util.List;
  *@Description:功能
  * */public class QuyucxAdapter extends RecyclerView.Adapter<QuyucxAdapter.Viewholder> {
     private List<QuyuchaxBean.ResultBean> result1=new ArrayList<>();
+    private int id;
 
     public void setResult1(List<QuyuchaxBean.ResultBean> result1) {
         this.result1 = result1;
@@ -33,8 +34,17 @@ import java.util.List;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
+    public void onBindViewHolder(@NonNull Viewholder viewholder, final int i) {
     viewholder.textView.setText(result1.get(i).getName());
+        id = result1.get(i).getId();
+        viewholder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (onclicklisten!=null){
+                onclicklisten.success(id,i);
+            }
+        }
+    });
     }
 
     @Override
@@ -59,4 +69,13 @@ import java.util.List;
             textView = itemView.findViewById(R.id.dizhicx_te);
          }
      }
+    //条目点击接口回调
+    private Onclicklisten onclicklisten;
+
+    public interface Onclicklisten{
+        void success(int id,int i);
+    }
+    public void setOnclicklisten(Onclicklisten onclicklisten) {
+        this.onclicklisten = onclicklisten;
+    }
 }

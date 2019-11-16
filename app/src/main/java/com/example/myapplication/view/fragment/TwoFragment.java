@@ -1,5 +1,6 @@
 package com.example.myapplication.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,8 +10,12 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.baidu.location.LocationClient;
 import com.example.myapplication.R;
+import com.example.myapplication.view.activity.Main5Activity;
+import com.example.myapplication.view.activity.MyLocationListener;
 import com.example.myapplication.view.adapter.Fragmenttwoadapter;
 import com.example.myapplication.view.fragment.twofragment.Fragmentone;
 import com.example.myapplication.view.fragment.twofragment.Fragmentthree;
@@ -33,6 +38,13 @@ import butterknife.Unbinder;
     @BindView(R.id.fragmenttwo_vp)
     ViewPager fragmenttwoVp;
     Unbinder unbinder;
+    @BindView(R.id.dingwei)
+    ImageView dingwei;
+    //定位类实例化
+    public LocationClient mLocationClient = null;
+    @BindView(R.id.move_sou)
+    ImageView moveSou;
+    private MyLocationListener myListener = new MyLocationListener();
     private ArrayList<Fragment> list;
 
     @Nullable
@@ -40,6 +52,7 @@ import butterknife.Unbinder;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragmentmove, container, false);
         unbinder = ButterKnife.bind(this, inflate);
+
         return inflate;
     }
 
@@ -47,9 +60,30 @@ import butterknife.Unbinder;
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initview();
+        initdata();
+    }
+
+    private void initdata() {
+        dingwei.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLocationClient = new LocationClient(getContext());
+                //声明LocationClient类
+                mLocationClient.registerLocationListener(myListener);
+                mLocationClient.start();
+
+            }
+        });
+        moveSou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), Main5Activity.class));
+            }
+        });
     }
 
     private void initview() {
+
         list = new ArrayList<>();
         list.add(new Fragmentone());
         list.add(new Fragmenttwo());
@@ -59,12 +93,13 @@ import butterknife.Unbinder;
         fragmenttwoTab.setupWithViewPager(fragmenttwoVp);
         fragmenttwoTab.getTabAt(0).setText("推荐影院");
         fragmenttwoTab.getTabAt(1).setText("附近影院");
-        fragmenttwoTab.getTabAt(2).setText("海淀区");
+        fragmenttwoTab.getTabAt(2).setText("海淀区 ▼");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        mLocationClient.stop();
     }
 }

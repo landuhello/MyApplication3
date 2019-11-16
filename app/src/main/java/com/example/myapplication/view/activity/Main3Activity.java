@@ -5,24 +5,29 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.myapplication.R;
+import com.example.myapplication.model.bean.DayBean;
+import com.example.myapplication.presenter.DayPresenter;
 import com.example.myapplication.view.adapter.PaiqiAdapter;
 import com.example.myapplication.view.fragment.movepaiqi.PaiqiFragmentone;
 import com.example.myapplication.view.fragment.movepaiqi.PaiqiFragmentthree;
 import com.example.myapplication.view.fragment.movepaiqi.PaiqiFragmenttwo;
+import com.example.myapplication.view.inteface.MomInteface;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Main3Activity extends AppCompatActivity {
+public class Main3Activity extends AppCompatActivity implements MomInteface.doday {
 
     @BindView(R.id.fanhui)
     ImageView fanhui;
@@ -33,6 +38,8 @@ public class Main3Activity extends AppCompatActivity {
     private ArrayList<Fragment> list;
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener = new MyLocationListener();
+    private List<String> result=new ArrayList<>();
+    private DayPresenter dayPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,9 @@ public class Main3Activity extends AppCompatActivity {
     }
 
     private void initview() {
+        dayPresenter = new DayPresenter();
+        dayPresenter.bind(this);
+        dayPresenter.doday();
         LocationClientOption option = new LocationClientOption();
 
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
@@ -93,16 +103,25 @@ public class Main3Activity extends AppCompatActivity {
 //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
 //更多LocationClientOption的配置，请参照类参考中LocationClientOption类的详细说明
         list = new ArrayList<>();
-        list.add(new PaiqiFragmentone());
-        list.add(new PaiqiFragmenttwo());
-        list.add(new PaiqiFragmentthree());
+        list.add(new PaiqiFragmentone(1));
+        list.add(new PaiqiFragmentone(2));
+        list.add(new PaiqiFragmentone(3));
+        list.add(new PaiqiFragmentone(4));
+        list.add(new PaiqiFragmentone(5));
+        list.add(new PaiqiFragmentone(6));
+        list.add(new PaiqiFragmentone(7));
+        /*list.add(new PaiqiFragmenttwo());
+        list.add(new PaiqiFragmentthree());*/
         PaiqiAdapter paiqiAdapter = new PaiqiAdapter(getSupportFragmentManager(), list);
         paiqiVp.setAdapter(paiqiAdapter);
         paiqiTab.setupWithViewPager(paiqiVp);
-        paiqiTab.getTabAt(0).setText("今天");
+
+       /* paiqiTab.getTabAt(0).setText("今天");
         paiqiTab.getTabAt(1).setText("明天");
-        paiqiTab.getTabAt(2).setText("后天");
+        paiqiTab.getTabAt(2).setText("后天");*/
     }
+
+
 
     @OnClick(R.id.fanhui)
     public void onViewClicked(View view) {
@@ -112,4 +131,23 @@ public class Main3Activity extends AppCompatActivity {
                 break;
         }
     }
+
+    @Override
+    public void success(DayBean bean) {
+        result = bean.getResult();
+        for (int i = 0; i <result.size() ; i++) {
+            String s = result.get(i);
+            paiqiTab.getTabAt(i).setText(s);
+
+        }
+
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dayPresenter.unbind();
+    }
 }
+

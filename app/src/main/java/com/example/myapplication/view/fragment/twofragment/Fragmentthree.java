@@ -1,5 +1,8 @@
 package com.example.myapplication.view.fragment.twofragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,14 +15,18 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.bean.QuyuchaxBean;
+import com.example.myapplication.model.bean.StickBean;
 import com.example.myapplication.model.bean.ToolBean;
 import com.example.myapplication.presenter.QuyuchaxPresenter;
 import com.example.myapplication.presenter.ToolPresenter;
+import com.example.myapplication.view.activity.MovexiangqingMainActivity;
 import com.example.myapplication.view.adapter.Dizhiadapter;
 import com.example.myapplication.view.adapter.Fragmentoneadapter;
 import com.example.myapplication.view.adapter.Fragmenttwofujinadapter;
 import com.example.myapplication.view.adapter.QuyucxAdapter;
 import com.example.myapplication.view.inteface.MomInteface;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +45,7 @@ import butterknife.Unbinder;
     @BindView(R.id.dianyingquyu_recy)
     RecyclerView dianyingquyuRecy;
     Unbinder unbinder;
+    private int id1;
     private List<ToolBean.ResultBean> result;
 
     private ToolPresenter toolPresenter;
@@ -92,6 +100,16 @@ import butterknife.Unbinder;
         dianyingquyuRecy.setLayoutManager(manager1);
         quyucxAdapter = new QuyucxAdapter();
         dianyingquyuRecy.setAdapter(quyucxAdapter);
+        quyucxAdapter.setOnclicklisten(new QuyucxAdapter.Onclicklisten() {
+            @Override
+            public void success(int id, int i) {
+                id1 = result1.get(i).getId();
+                Intent intent = new Intent(getContext(), MovexiangqingMainActivity.class);
+                startActivity(intent);
+                EventBus.getDefault().postSticky(new StickBean(null,null,id1,null,null));
+            }
+        });
+
     }
     @Override
     public void success(ToolBean toolBean) {

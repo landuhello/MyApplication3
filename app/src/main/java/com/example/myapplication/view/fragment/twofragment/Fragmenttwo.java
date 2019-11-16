@@ -86,7 +86,7 @@ import butterknife.Unbinder;
                 address = result.get(i).getAddress();
                 name = result.get(i).getName();
                 id1 = result.get(i).getId();
-                EventBus.getDefault().postSticky(new StickBean(address,name,id1));
+                EventBus.getDefault().postSticky(new StickBean(address,name,id1,null,null));
             }
         });
     }

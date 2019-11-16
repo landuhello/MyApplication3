@@ -6,14 +6,19 @@ import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.CinemadetailsBean;
+import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.LoginBean;
+import com.example.myapplication.model.bean.MhmoveyBean;
 import com.example.myapplication.model.bean.NearbyBean;
 import com.example.myapplication.model.bean.PaiqiBean;
 import com.example.myapplication.model.bean.QuyuchaxBean;
+import com.example.myapplication.model.bean.RegBean;
 import com.example.myapplication.model.bean.RmenBean;
 import com.example.myapplication.model.bean.ToolBean;
+import com.example.myapplication.model.bean.YanzhengBean;
 import com.example.myapplication.model.bean.ZhengBean;
 
 /*
@@ -64,5 +69,25 @@ import com.example.myapplication.model.bean.ZhengBean;
     //区域查询
     interface doquyucx extends Baseinteface{
          void success(QuyuchaxBean bean);
+    }
+    //日期
+    interface doday extends Baseinteface{
+         void success(DayBean bean);
+    }
+    //电影明细
+    interface domx extends Baseinteface{
+         void success(CinemadetailsBean bean);
+    }
+    //模糊查询电影院
+    interface domhmovey extends Baseinteface{
+         void success(MhmoveyBean bean);
+    }
+    //注册
+    interface doreg extends Baseinteface{
+         void success(RegBean bean);
+    }
+    //验证码
+    interface doyan extends Baseinteface{
+         void success(YanzhengBean bean);
     }
 }

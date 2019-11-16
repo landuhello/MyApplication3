@@ -1,6 +1,5 @@
 package com.example.myapplication.view.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,10 +13,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.model.bean.CinemadetailsBean;
 import com.example.myapplication.model.bean.StickBean;
+import com.example.myapplication.presenter.MovemxPresenter;
 import com.example.myapplication.view.adapter.Xiangfragmentadapter;
 import com.example.myapplication.view.fragment.xiangqingfragment.Xiangfragmentone;
 import com.example.myapplication.view.fragment.xiangqingfragment.Xiangfragmenttwo;
+import com.example.myapplication.view.inteface.MomInteface;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -28,8 +30,9 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
-public class MovexiangqingMainActivity extends AppCompatActivity {
+public class MovexiangqingMainActivity extends AppCompatActivity implements MomInteface.domx {
 
     @BindView(R.id.xiangqing_vp)
     ViewPager xiangqingVp;
@@ -39,20 +42,23 @@ public class MovexiangqingMainActivity extends AppCompatActivity {
     TextView xiangqingText;
     @BindView(R.id.fanhui)
     ImageView fanhui;
+    @BindView(R.id.yanjing)
+    TextView yanjing;
+    private MovemxPresenter movemxPresenter;
 
 
     private ArrayList<Fragment> list;
     private int id;
-    private String name;
-    private String address;
+
+    private Unbinder bind;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movexiangqing_main);
-        ButterKnife.bind(this);
-
+        bind = ButterKnife.bind(this);
+        initview();
         list = new ArrayList<>();
         list.add(new Xiangfragmentone());
         list.add(new Xiangfragmenttwo());
@@ -65,6 +71,7 @@ public class MovexiangqingMainActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -73,10 +80,10 @@ public class MovexiangqingMainActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void dostic(StickBean stickBean) {
-        name = stickBean.getName();
-        address = stickBean.getAddress();
+
+
         id = stickBean.getId();
-        xiangqingText.setText(name);
+        movemxPresenter.domx(id);
         SharedPreferences sharedPreferences = getSharedPreferences("bw.db", Context.MODE_MULTI_PROCESS);
         SharedPreferences.Editor edit = sharedPreferences.edit();
         edit.putInt("id", id);
@@ -90,18 +97,34 @@ public class MovexiangqingMainActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
+    private void initview() {
+        movemxPresenter = new MovemxPresenter();
+        movemxPresenter.bind(this);
     }
+
 
     @OnClick(R.id.fanhui)
     public void onViewClicked(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.fanhui:
                 MovexiangqingMainActivity.this.finish();
                 break;
         }
+    }
+
+    @Override
+    public void success(CinemadetailsBean bean) {
+        CinemadetailsBean.ResultBean result = bean.getResult();
+        String name = result.getName();
+        String label = result.getLabel();
+        xiangqingText.setText(name);
+        yanjing.setText(label);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bind.unbind();
+        movemxPresenter.unbind();
     }
 }
