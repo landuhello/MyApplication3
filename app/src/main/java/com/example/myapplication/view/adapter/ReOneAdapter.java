@@ -22,10 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class ReOneAdapter extends RecyclerView.Adapter {
     private Context context;
-    private List<ZhengBean.ResultBean> list1=new ArrayList<>();
+    private List<ZhengBean.ResultBean> list1 = new ArrayList<>();
 
 
     public ReOneAdapter(Context context) {
@@ -44,7 +43,7 @@ public class ReOneAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
         final ViewHolder viewHolder1 = (ViewHolder) viewHolder;
         viewHolder1.tv_zhengyi.setText(list1.get(i).getName());
-        viewHolder1.tv_fen.setText(list1.get(i).getScore()+""+"分");
+        viewHolder1.tv_fen.setText(list1.get(i).getScore() + "" + "分");
         Glide.with(context)
                 .load(list1.get(i).getImageUrl())
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
@@ -53,32 +52,32 @@ public class ReOneAdapter extends RecyclerView.Adapter {
         viewHolder1.iv_zhengyi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (oneRe!=null){
-                    oneRe.ok(i,movieId);
+                if (oneRe != null) {
+                    oneRe.ok(i, movieId);
                 }
             }
         });
     }
 
 
-
     public void getad(List<ZhengBean.ResultBean> result) {
-        if (result!=null&&result.size()>0){
+        if (result != null && result.size() > 0) {
             list1.addAll(result);
         }
         notifyDataSetChanged();
     }
 
-    class  ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_zhengyi;
-        TextView tv_zhengyi,tv_fen;
+        TextView tv_zhengyi, tv_fen;
         Button but_zhengyi;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            iv_zhengyi=itemView.findViewById(R.id.iv_zhengyi);
-            tv_zhengyi=itemView.findViewById(R.id.tv_zhengyi);
-            tv_fen=itemView.findViewById(R.id.tv_fen);
-            but_zhengyi=itemView.findViewById(R.id.but_zhengyi);
+            iv_zhengyi = itemView.findViewById(R.id.iv_zhengyi);
+            tv_zhengyi = itemView.findViewById(R.id.tv_zhengyi);
+            tv_fen = itemView.findViewById(R.id.tv_fen);
+            but_zhengyi = itemView.findViewById(R.id.but_zhengyi);
         }
     }
 
@@ -86,10 +85,11 @@ public class ReOneAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return list1.size();
     }
+
     private OneRe oneRe;
 
-    public interface OneRe{
-        void ok(int i,int movieId);
+    public interface OneRe {
+        void ok(int i, int movieId);
     }
 
     public void setOneRe(OneRe oneRe) {

@@ -116,7 +116,7 @@ import butterknife.Unbinder;
             @Override
             public void ok(int i, int movieId) {
                 Intent intent = new Intent(getContext(), DetailActivity.class);
-                intent.putExtra("movieId",movieId);
+                intent.putExtra("movieId", movieId);
                 startActivity(intent);
             }
         });

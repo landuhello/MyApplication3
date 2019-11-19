@@ -83,7 +83,6 @@ import butterknife.Unbinder;
     @BindView(R.id.line_install)
     LinearLayout lineInstall;
     Unbinder unbinder;
-
     private LoginPresenter loginPresenter;
     private DaoBeanDao daoBeanDao;
     private String login;
@@ -106,7 +105,6 @@ import butterknife.Unbinder;
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         initview();
         super.onActivityCreated(savedInstanceState);
-
     }
 
     @Override
@@ -114,14 +112,15 @@ import butterknife.Unbinder;
         EventBus.getDefault().register(this);
         super.onStart();
     }
-    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    public void dorl(LoginBean loginBean){
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void dorl(LoginBean loginBean) {
         Glide.with(getContext()).load(loginBean.getResult().getUserInfo().getHeadPic())
                 .apply(RequestOptions.bitmapTransform(new CircleCrop())).into(imageQwe);
         textQweName.setText(loginBean.getResult().getUserInfo().getNickName());
         status = loginBean.getStatus();
-
     }
+
     @Override
     public void onStop() {
         EventBus.getDefault().unregister(this);
@@ -129,13 +128,12 @@ import butterknife.Unbinder;
     }
 
     private void initview() {
-
         linLau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ("0000".equals(status)){
-                    startActivity(new Intent(getContext(),Main9Activity.class));
-                }else {
+                if ("0000".equals(status)) {
+                    startActivity(new Intent(getContext(), Main9Activity.class));
+                } else {
                     startActivity(new Intent(getContext(), Main6Activity.class));
                 }
             }
@@ -146,8 +144,5 @@ import butterknife.Unbinder;
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-        loginPresenter.unbind();
     }
-
-
 }

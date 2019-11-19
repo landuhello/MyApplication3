@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ReyingtwoAdapter extends RecyclerView.Adapter {
     private Context context;
-    private List<JiBean.ResultBean> jilist=new ArrayList<>();
+    private List<JiBean.ResultBean> jilist = new ArrayList<>();
 
     public ReyingtwoAdapter(Context context) {
         this.context = context;
@@ -45,8 +45,8 @@ public class ReyingtwoAdapter extends RecyclerView.Adapter {
         final long releaseTime = jilist.get(i).getReleaseTime();
         SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日");
         String format = sdf.format(releaseTime);
-        viewHolder1.tv_yingjitwo.setText(format+"上映");
-        viewHolder1.tv_yingjithree.setText(jilist.get(i).getWantSeeNum()+""+"人想看");
+        viewHolder1.tv_yingjitwo.setText(format + "上映");
+        viewHolder1.tv_yingjithree.setText(jilist.get(i).getWantSeeNum() + "" + "人想看");
         Glide.with(context)
                 .load(jilist.get(i).getImageUrl())
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
@@ -54,24 +54,25 @@ public class ReyingtwoAdapter extends RecyclerView.Adapter {
     }
 
     public void getyingji(List<JiBean.ResultBean> result) {
-        if (result!=null&&result.size()>0){
+        if (result != null && result.size() > 0) {
             jilist.addAll(result);
         }
         notifyDataSetChanged();
     }
 
 
-    class  ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_yingji;
-        TextView tv_yingjione,tv_yingjitwo,tv_yingjithree;
+        TextView tv_yingjione, tv_yingjitwo, tv_yingjithree;
         Button but_yingjigou;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            iv_yingji=itemView.findViewById(R.id.iv_yingji);
-            tv_yingjione=itemView.findViewById(R.id.tv_yingjione);
-            tv_yingjitwo=itemView.findViewById(R.id.tv_yingjitwo);
-            tv_yingjithree=itemView.findViewById(R.id.tv_yingjithree);
-            but_yingjigou=itemView.findViewById(R.id.but_yingjigou);
+            iv_yingji = itemView.findViewById(R.id.iv_yingji);
+            tv_yingjione = itemView.findViewById(R.id.tv_yingjione);
+            tv_yingjitwo = itemView.findViewById(R.id.tv_yingjitwo);
+            tv_yingjithree = itemView.findViewById(R.id.tv_yingjithree);
+            but_yingjigou = itemView.findViewById(R.id.but_yingjigou);
         }
     }
 

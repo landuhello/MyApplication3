@@ -26,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Main7Activity extends BaseActivity<RegPresenter> implements MomInteface.doreg,MomInteface.doyan {
+public class Main7Activity extends BaseActivity<RegPresenter> implements MomInteface.doreg, MomInteface.doyan {
 
 
     @BindView(R.id.fanhui)
@@ -72,16 +72,16 @@ public class Main7Activity extends BaseActivity<RegPresenter> implements MomInte
 
     @Override
     public void success(RegBean bean) {
-        if (bean!=null&&"0000".equals(bean.getStatus())) {
-            startActivity(new Intent(this,Main6Activity.class));
+        if (bean != null && "0000".equals(bean.getStatus())) {
+            startActivity(new Intent(this, Main6Activity.class));
         }
     }
 
     @Override
     public void success(YanzhengBean bean) {
-        if (bean.equals("0000") && bean!= null) {
+        if (bean.equals("0000") && bean != null) {
             Toast.makeText(this, "发送失败，请重新发送", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
         }
     }
@@ -102,12 +102,12 @@ public class Main7Activity extends BaseActivity<RegPresenter> implements MomInte
                 mima = edMm.getText().toString().trim();
                 code = edZhu.getText().toString().trim();
                 if (TextUtils.isEmpty(name) || TextUtils.isEmpty(mima) || TextUtils.isEmpty(email
-                ) || TextUtils.isEmpty(code)){
+                ) || TextUtils.isEmpty(code)) {
                     Toast.makeText(this, "输入框为空", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     String pwd = EncryptUtil.encrypt(mima);
 
-                    t.doreg(name,pwd,email,code);
+                    t.doreg(name, pwd, email, code);
                 }
                 break;
         }

@@ -39,7 +39,7 @@ import butterknife.Unbinder;
  *@Auther:刘炳良
  *@Date: 时间
  *@Description:功能
- * */public class Fragmentthree extends Fragment implements MomInteface.dotool,MomInteface.doquyucx {
+ * */public class Fragmentthree extends Fragment implements MomInteface.dotool, MomInteface.doquyucx {
     @BindView(R.id.quyu_recy)
     RecyclerView quyuRecy;
     @BindView(R.id.dianyingquyu_recy)
@@ -51,7 +51,7 @@ import butterknife.Unbinder;
     private ToolPresenter toolPresenter;
     private Dizhiadapter dizhiadapter;
     private QuyuchaxPresenter quyuchaxPresenter;
-    private List<QuyuchaxBean.ResultBean> result1=new ArrayList<>();
+    private List<QuyuchaxBean.ResultBean> result1 = new ArrayList<>();
     private QuyucxAdapter quyucxAdapter;
 
     @Nullable
@@ -71,7 +71,7 @@ import butterknife.Unbinder;
 
 
     private void initview() {
-         toolPresenter = new ToolPresenter();
+        toolPresenter = new ToolPresenter();
         toolPresenter.bind(this);
         toolPresenter.dotool();
         quyuchaxPresenter = new QuyuchaxPresenter();
@@ -106,18 +106,18 @@ import butterknife.Unbinder;
                 id1 = result1.get(i).getId();
                 Intent intent = new Intent(getContext(), MovexiangqingMainActivity.class);
                 startActivity(intent);
-                EventBus.getDefault().postSticky(new StickBean(null,null,id1,null,null));
+                EventBus.getDefault().postSticky(new StickBean(null, null, id1, null, null));
             }
         });
 
     }
+
     @Override
     public void success(ToolBean toolBean) {
         result = toolBean.getResult();
         dizhiadapter.setResult(result);
         dizhiadapter.notifyDataSetChanged();
     }
-
 
 
     @Override
@@ -128,6 +128,7 @@ import butterknife.Unbinder;
         quyucxAdapter.notifyDataSetChanged();
 
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

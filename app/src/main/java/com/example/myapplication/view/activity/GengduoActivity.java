@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GengduoActivity extends AppCompatActivity  {
+public class GengduoActivity extends AppCompatActivity {
 
     @BindView(R.id.iv_ding)
     ImageView ivDing;

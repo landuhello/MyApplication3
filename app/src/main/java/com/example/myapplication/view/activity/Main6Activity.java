@@ -68,22 +68,22 @@ public class Main6Activity extends BaseActivity<LoginPresenter> implements MomIn
 
     @Override
     protected void initdata() {
-        SharedPreferences bw = getSharedPreferences("bw", MODE_MULTI_PROCESS);
-        SharedPreferences.Editor edit = bw.edit();
-        edit.putString("login",login);
-        edit.putString("mima",mi);
-        edit.commit();
+//        SharedPreferences bw = getSharedPreferences("bw", MODE_MULTI_PROCESS);
+//        SharedPreferences.Editor edit = bw.edit();
+//        edit.putString("login",login);
+//        edit.putString("mima",mi);
+//        edit.commit();
     }
 
     @Override
     public void success(LoginBean bean) {
-        if (bean!=null&&"0000".equals(bean.getStatus())){
-            startActivity(new Intent(this,Main2Activity.class));
+        if (bean != null && "0000".equals(bean.getStatus())) {
+            startActivity(new Intent(this, Main2Activity.class));
             email = bean.getResult().getUserInfo().getEmail();
             mima = edMima.getText().toString().trim();
             mi = EncryptUtil.encrypt(mima);
             EventBus.getDefault().postSticky(bean);
-        }else {
+        } else {
             Toast.makeText(this, bean.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
@@ -101,9 +101,9 @@ public class Main6Activity extends BaseActivity<LoginPresenter> implements MomIn
             case R.id.but_deng:
                 login = edLogin.getText().toString().trim();
                 mima = edMima.getText().toString().trim();
-                if (TextUtils.isEmpty(login) || TextUtils.isEmpty(mima)){
+                if (TextUtils.isEmpty(login) || TextUtils.isEmpty(mima)) {
                     Toast.makeText(this, "输入为空", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     mi = EncryptUtil.encrypt(mima);
                     HashMap<String, String> map = new HashMap<>();
                     map.put("email", login);

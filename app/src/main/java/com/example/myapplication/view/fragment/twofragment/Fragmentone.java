@@ -58,15 +58,15 @@ import butterknife.Unbinder;
     }
 
 
-
     private void initview() {
         cinPresenter = new CinPresenter();
         cinPresenter.bind(this);
-        Map<String,Integer>map=new HashMap<>();
-        map.put("page",1);
-        map.put("count",6);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("page", 1);
+        map.put("count", 6);
         cinPresenter.docin(map);
     }
+
     private void initdata() {
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         fragmentoneRecy.setLayoutManager(manager);
@@ -87,7 +87,7 @@ import butterknife.Unbinder;
                 name1 = result.get(i).getName();
                 id1 = result.get(i).getId();
                 //传值
-                EventBus.getDefault().postSticky(new StickBean(address1,name1,id1,null,null));
+                EventBus.getDefault().postSticky(new StickBean(address1, name1, id1, null, null));
 //                Log.i("hello",address1);
 //                Log.i("hello1",name1);
 //                Log.i("hello2",id1+"");
@@ -101,6 +101,7 @@ import butterknife.Unbinder;
         fragmentoneadapter.setResult(result);
         fragmentoneadapter.notifyDataSetChanged();
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

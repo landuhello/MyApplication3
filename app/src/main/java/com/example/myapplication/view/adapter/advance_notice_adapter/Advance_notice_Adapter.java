@@ -37,7 +37,7 @@ public class Advance_notice_Adapter extends RecyclerView.Adapter<Advance_notice_
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         ViewHolder viewHolder1 = viewHolder;
-        viewHolder1.videoJcv.setUp(shortlist.get(i).videoUrl,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"");
+        viewHolder1.videoJcv.setUp(shortlist.get(i).videoUrl, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "");
         Glide.with(context).load(shortlist.get(i).imageUrl).into(viewHolder1.videoJcv.thumbImageView);
     }
 
@@ -51,6 +51,7 @@ public class Advance_notice_Adapter extends RecyclerView.Adapter<Advance_notice_
         JCVideoPlayerStandard videoJcv;
         @BindView(R.id.advance_lin)
         LinearLayout advanceLin;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

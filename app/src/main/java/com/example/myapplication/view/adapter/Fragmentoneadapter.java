@@ -20,7 +20,7 @@ import java.util.List;
  *@Date: 时间
  *@Description:功能
  * */public class Fragmentoneadapter extends RecyclerView.Adapter<Fragmentoneadapter.Viewholder> {
-    private List<CinemaBean.ResultBean> result=new ArrayList<>();
+    private List<CinemaBean.ResultBean> result = new ArrayList<>();
     private String name;
     private String address;
     private int id;
@@ -49,8 +49,8 @@ import java.util.List;
         viewholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (domove!=null){
-                    domove.onclick(name, address, id,i);
+                if (domove != null) {
+                    domove.onclick(name, address, id, i);
                 }
             }
         });
@@ -58,15 +58,15 @@ import java.util.List;
 
     @Override
     public int getItemCount() {
-        if (result!=null){
+        if (result != null) {
             return result.size();
-        }else {
+        } else {
             return 0;
         }
 
     }
 
-    class Viewholder extends RecyclerView.ViewHolder{
+    class Viewholder extends RecyclerView.ViewHolder {
 
         private final ImageView imageView;
         private final TextView textView;
@@ -79,11 +79,12 @@ import java.util.List;
             textView1 = itemView.findViewById(R.id.one_te1);
         }
     }
+
     //条目点击接口回调
     private Domove domove;
 
-    public interface Domove{
-        void onclick(String name,String address,int id,int i);
+    public interface Domove {
+        void onclick(String name, String address, int id, int i);
     }
 
 

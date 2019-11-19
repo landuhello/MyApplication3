@@ -44,7 +44,7 @@ public class ReyingthreeAdapter extends RecyclerView.Adapter {
         viewHolder1.tv_yingrmenfive.setText(rmenlist.get(i).getName());
         viewHolder1.tv_yingrmenone.setText(rmenlist.get(i).getDirector());
         viewHolder1.tv_yingrmentwo.setText(rmenlist.get(i).getStarring());
-        viewHolder1.tv_yingrmenthree.setText(rmenlist.get(i).getScore()+""+"分");
+        viewHolder1.tv_yingrmenthree.setText(rmenlist.get(i).getScore() + "" + "分");
         Glide.with(context)
                 .load(rmenlist.get(i).getImageUrl())
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
@@ -52,25 +52,26 @@ public class ReyingthreeAdapter extends RecyclerView.Adapter {
     }
 
     public void getyingrmen(List<RmenBean.ResultBean> result) {
-        if (result!=null&&result.size()>0){
+        if (result != null && result.size() > 0) {
             rmenlist.addAll(result);
         }
         notifyDataSetChanged();
     }
 
 
-    class  ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_yingrmen;
-        TextView tv_yingrmenfive,tv_yingrmenone,tv_yingrmentwo,tv_yingrmenthree;
+        TextView tv_yingrmenfive, tv_yingrmenone, tv_yingrmentwo, tv_yingrmenthree;
         Button but_yingrmengou;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            iv_yingrmen=itemView.findViewById(R.id.iv_yingrmen);
-            tv_yingrmenfive=itemView.findViewById(R.id.tv_yingrmenfive);
-            tv_yingrmenone=itemView.findViewById(R.id.tv_yingrmenone);
-            tv_yingrmentwo=itemView.findViewById(R.id.tv_yingrmentwo);
-            tv_yingrmenthree=itemView.findViewById(R.id.tv_yingrmenthree);
-            but_yingrmengou=itemView.findViewById(R.id.but_yingrmengou);
+            iv_yingrmen = itemView.findViewById(R.id.iv_yingrmen);
+            tv_yingrmenfive = itemView.findViewById(R.id.tv_yingrmenfive);
+            tv_yingrmenone = itemView.findViewById(R.id.tv_yingrmenone);
+            tv_yingrmentwo = itemView.findViewById(R.id.tv_yingrmentwo);
+            tv_yingrmenthree = itemView.findViewById(R.id.tv_yingrmenthree);
+            but_yingrmengou = itemView.findViewById(R.id.but_yingrmengou);
         }
     }
 

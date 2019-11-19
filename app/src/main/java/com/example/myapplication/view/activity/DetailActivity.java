@@ -117,8 +117,8 @@ public class DetailActivity extends BaseActivity<DetailPresenter> implements Mom
     public void ok(DetilBean detilBean) {
         result = detilBean.result;
         Toast.makeText(this, result.name, Toast.LENGTH_SHORT).show();
-        tvXiangone.setText(detilBean.result.score+"分"+"");
-        tvXiangtwo.setText(detilBean.result.commentNum+"万条");
+        tvXiangone.setText(detilBean.result.score + "分" + "");
+        tvXiangtwo.setText(detilBean.result.commentNum + "万条");
         tvXiangthree.setText(detilBean.result.name);
         tvXianglei.setText(detilBean.result.movieType);
         tvXiangbo.setText(detilBean.result.duration);

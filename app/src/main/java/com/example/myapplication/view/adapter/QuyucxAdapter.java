@@ -18,7 +18,7 @@ import java.util.List;
  *@Date: 时间
  *@Description:功能
  * */public class QuyucxAdapter extends RecyclerView.Adapter<QuyucxAdapter.Viewholder> {
-    private List<QuyuchaxBean.ResultBean> result1=new ArrayList<>();
+    private List<QuyuchaxBean.ResultBean> result1 = new ArrayList<>();
     private int id;
 
     public void setResult1(List<QuyuchaxBean.ResultBean> result1) {
@@ -35,23 +35,23 @@ import java.util.List;
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, final int i) {
-    viewholder.textView.setText(result1.get(i).getName());
+        viewholder.textView.setText(result1.get(i).getName());
         id = result1.get(i).getId();
         viewholder.itemView.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (onclicklisten!=null){
-                onclicklisten.success(id,i);
+            @Override
+            public void onClick(View view) {
+                if (onclicklisten != null) {
+                    onclicklisten.success(id, i);
+                }
             }
-        }
-    });
+        });
     }
 
     @Override
     public int getItemCount() {
-        if (result1!=null){
+        if (result1 != null) {
             return result1.size();
-        }else {
+        } else {
             return 0;
         }
     }
@@ -60,21 +60,23 @@ import java.util.List;
         result1.clear();
     }
 
-    class Viewholder extends RecyclerView.ViewHolder{
+    class Viewholder extends RecyclerView.ViewHolder {
 
-         TextView textView;
+        TextView textView;
 
         public Viewholder(@NonNull View itemView) {
-             super(itemView);
+            super(itemView);
             textView = itemView.findViewById(R.id.dizhicx_te);
-         }
-     }
+        }
+    }
+
     //条目点击接口回调
     private Onclicklisten onclicklisten;
 
-    public interface Onclicklisten{
-        void success(int id,int i);
+    public interface Onclicklisten {
+        void success(int id, int i);
     }
+
     public void setOnclicklisten(Onclicklisten onclicklisten) {
         this.onclicklisten = onclicklisten;
     }
