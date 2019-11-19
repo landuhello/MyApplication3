@@ -1,38 +1,92 @@
 package com.example.myapplication.view.activity;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ArrayAdapter;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SearchView;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.model.bean.MhmoveyBean;
 import com.example.myapplication.presenter.MhmoveyPresenter;
+import com.example.myapplication.view.adapter.RecyclerKeyWordAdapter;
 import com.example.myapplication.view.inteface.MomInteface;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Main5Activity extends AppCompatActivity implements MomInteface.domhmovey {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
+public class Main5Activity extends BaseActivity<MhmoveyPresenter> implements MomInteface.domhmovey {
+
+
+    @BindView(R.id.et_movie_thekeyword)
+    EditText etMovieThekeyword;
+    @BindView(R.id.iv_search_movie)
+    ImageView ivSearchMovie;
+    @BindView(R.id.recycler_thekeyword)
+    RecyclerView recyclerThekeyword;
+    private int page = 1;
+    private int count = 5;
+    private List<MhmoveyBean.ResultBean> result;
+    private RecyclerKeyWordAdapter recyclerKeyWordAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main5);
-
+    protected int initview() {
+        return R.layout.activity_main5;
     }
 
+    @Override
+    protected MhmoveyPresenter setpresenter() {
+        return new MhmoveyPresenter();
+    }
+
+    @Override
+    protected void initdata() {
+        etMovieThekeyword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String keyword = etMovieThekeyword.getText().toString().trim();
+                Map<String,Integer>map=new HashMap<>();
+                map.put("page",1);
+                map.put("count",10);
+                t.domhmovey(map,keyword);
+
+            }
+        });
+
+    }
 
     @Override
     public void success(MhmoveyBean bean) {
-
+        if (bean.getMessage().equals("未查到相关电影")){
+            Toast.makeText(this,bean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            result = bean.getResult();
+            LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+            recyclerKeyWordAdapter = new RecyclerKeyWordAdapter();
+            recyclerKeyWordAdapter.setResult(result);
+            recyclerThekeyword.setLayoutManager(manager);
+            recyclerThekeyword.setAdapter(recyclerKeyWordAdapter);
+        }
     }
+
+
 }
