@@ -18,13 +18,13 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
 import com.example.myapplication.model.bean.BannerBean;
-import com.example.myapplication.model.bean.EventBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.RmenBean;
 import com.example.myapplication.model.bean.ZhengBean;
 import com.example.myapplication.presenter.BannerPresenter;
 import com.example.myapplication.view.activity.DetailActivity;
 import com.example.myapplication.view.activity.GengduoActivity;
+import com.example.myapplication.view.activity.SearchActivity;
 import com.example.myapplication.view.adapter.ReOneAdapter;
 import com.example.myapplication.view.adapter.ReThreeAdapter;
 import com.example.myapplication.view.adapter.ReTwoAdapter;
@@ -33,12 +33,11 @@ import com.youth.banner.Banner;
 import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /*
@@ -225,5 +224,14 @@ import butterknife.Unbinder;
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick(R.id.iv2)
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.iv2:
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+                break;
+        }
     }
 }

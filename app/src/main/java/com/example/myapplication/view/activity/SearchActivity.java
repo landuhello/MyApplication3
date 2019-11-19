@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
-import com.example.myapplication.model.bean.MhmoveyBean;
-import com.example.myapplication.presenter.MhmoveyPresenter;
-import com.example.myapplication.view.adapter.RecyclerKeyWordAdapter;
+import com.example.myapplication.model.bean.KeywordsBean;
+import com.example.myapplication.presenter.KeywordPresenter;
+import com.example.myapplication.view.adapter.recyclerKeyAdapter;
 import com.example.myapplication.view.inteface.MomInteface;
 
 import java.util.HashMap;
@@ -25,7 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Main5Activity extends BaseActivity<MhmoveyPresenter> implements MomInteface.domhmovey {
+public class SearchActivity extends BaseActivity<KeywordPresenter> implements MomInteface.dokey {
 
 
     @BindView(R.id.et_movie_thekeyword)
@@ -36,20 +36,20 @@ public class Main5Activity extends BaseActivity<MhmoveyPresenter> implements Mom
     RecyclerView recyclerThekeyword;
     @BindView(R.id.fanhui)
     ImageView fanhui;
-    private int page = 1;
-    private int count = 5;
-    private List<MhmoveyBean.ResultBean> result;
-    private RecyclerKeyWordAdapter recyclerKeyWordAdapter;
+
+    private List<KeywordsBean.ResultBean> result;
+    private com.example.myapplication.view.adapter.recyclerKeyAdapter recyclerKeyAdapter;
 
     @Override
     protected int initview() {
-        return R.layout.activity_main5;
+        return R.layout.activity_search;
     }
 
     @Override
-    protected MhmoveyPresenter setpresenter() {
-        return new MhmoveyPresenter();
+    protected KeywordPresenter setpresenter() {
+        return new KeywordPresenter();
     }
+
 
     @Override
     protected void initdata() {
@@ -70,7 +70,7 @@ public class Main5Activity extends BaseActivity<MhmoveyPresenter> implements Mom
                 Map<String, Integer> map = new HashMap<>();
                 map.put("page", 1);
                 map.put("count", 10);
-                t.domhmovey(map, keyword);
+                t.dokey(map, keyword);
 
             }
         });
@@ -78,17 +78,17 @@ public class Main5Activity extends BaseActivity<MhmoveyPresenter> implements Mom
     }
 
     @Override
-    public void success(MhmoveyBean bean) {
-        if (bean.getMessage().equals("未查到相关电影院")) {
+    public void success(KeywordsBean bean) {
+        if (bean.getMessage().equals("未查到相关电影")) {
             Toast.makeText(this, bean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         } else {
             result = bean.getResult();
             LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-            recyclerKeyWordAdapter = new RecyclerKeyWordAdapter();
-            recyclerKeyWordAdapter.setResult(result);
+            recyclerKeyAdapter = new recyclerKeyAdapter();
+            recyclerKeyAdapter.setResult(result);
             recyclerThekeyword.setLayoutManager(manager);
-            recyclerThekeyword.setAdapter(recyclerKeyWordAdapter);
+            recyclerThekeyword.setAdapter(recyclerKeyAdapter);
         }
     }
 
@@ -97,7 +97,7 @@ public class Main5Activity extends BaseActivity<MhmoveyPresenter> implements Mom
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fanhui:
-                Main5Activity.this.finish();
+                SearchActivity.this.finish();
                 break;
         }
     }

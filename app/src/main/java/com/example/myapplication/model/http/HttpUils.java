@@ -10,6 +10,7 @@ import com.example.myapplication.model.bean.CinemadetailsBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
+import com.example.myapplication.model.bean.KeywordsBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.MhmoveyBean;
 import com.example.myapplication.model.bean.NearbyBean;
@@ -357,6 +358,25 @@ import retrofit2.http.HEAD;
                     @Override
                     public void accept(YanzhengBean yanzhengBean) throws Exception {
                         callBack.success(yanzhengBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //电影关键字查询电影
+    public void dokey(Map<String,Integer>map, String keyword, final CallBack callBack){
+        api.dokey(map,keyword)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<KeywordsBean>() {
+                    @Override
+                    public void accept(KeywordsBean keywordsBean) throws Exception {
+                        callBack.success(keywordsBean);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

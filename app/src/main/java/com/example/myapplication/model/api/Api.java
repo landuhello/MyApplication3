@@ -8,6 +8,7 @@ import com.example.myapplication.model.bean.CinemadetailsBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
+import com.example.myapplication.model.bean.KeywordsBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.MhmoveyBean;
 import com.example.myapplication.model.bean.NearbyBean;
@@ -95,4 +96,8 @@ import retrofit2.http.QueryMap;
     //模糊查询电影院
     @GET("cinema/v1/findAllCinemas")
     Observable<MhmoveyBean> domhmovey(@QueryMap Map<String,Integer>map,@Query("cinemaName")String cinemaName);
+    //根据电影关键字查找电影详情
+    @GET("movie/v2/findMovieByKeyword")
+    Observable<KeywordsBean> dokey(@QueryMap Map<String,Integer>map,@Query("keyword")String keyword);
+
 }
