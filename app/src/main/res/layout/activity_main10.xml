@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#141931"
+    android:orientation="vertical"
+    tools:context=".view.activity.Main10Activity">
+    <RelativeLayout
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:id="@+id/fanhui"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/shapee"
+            android:layout_width="16dp"
+            android:layout_height="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="我的评论"
+            android:textColor="#deffffff"
+            android:textSize="16sp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <android.support.design.widget.TabLayout
+            android:background="#1c2243"
+            app:tabGravity="center"
+            app:tabTextColor="#ffffff"
+            android:id="@+id/paiqi_tab"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"></android.support.design.widget.TabLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/paiqi_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+    </LinearLayout>
+</LinearLayout>

@@ -5,8 +5,10 @@ import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.CinemadetailsBean;
+import com.example.myapplication.model.bean.CommentBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
+import com.example.myapplication.model.bean.FeedbackBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.KeywordsBean;
 import com.example.myapplication.model.bean.LoginBean;
@@ -28,6 +30,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -99,5 +102,11 @@ import retrofit2.http.QueryMap;
     //根据电影关键字查找电影详情
     @GET("movie/v2/findMovieByKeyword")
     Observable<KeywordsBean> dokey(@QueryMap Map<String,Integer>map,@Query("keyword")String keyword);
-
+    //查询影院评论
+    @GET("user/v2/verify/findMyCinemaCommentList")
+    Observable<CommentBean> docomment(@HeaderMap Map<String,String>map,@QueryMap Map<String,String> id,@QueryMap Map<String,Integer> pc);
+    //意见反馈
+    @FormUrlEncoded
+    @POST("tool/v1/verify/recordFeedBack")
+    Observable<FeedbackBean> dofeed(@FieldMap Map<String,String>map,@Field("content")String content);
 }

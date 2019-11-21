@@ -41,7 +41,7 @@ import java.util.List;
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         viewholder.textView.setText(result.get(i).getCommentUserName());
         Date date = new Date(result.get(i).getCommentTime());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         viewholder.textView1.setText(String.valueOf(simpleDateFormat.format(date)));
         viewholder.textView2.setText(result.get(i).getGreatNum() + "人觉得很赞");
         Glide.with(viewholder.itemView.getContext()).load(result.get(i).getCommentHeadPic()).into(viewholder.imageView);

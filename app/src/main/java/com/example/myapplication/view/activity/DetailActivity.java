@@ -124,7 +124,7 @@ public class DetailActivity extends BaseActivity<DetailPresenter> implements Mom
         tvXiangbo.setText(detilBean.result.duration);
 
         Date date = new Date(detilBean.result.releaseTime);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String format = sdf.format(date);
         tvXiangtime.setText(format);
         tvXiangguo.setText(detilBean.result.placeOrigin);

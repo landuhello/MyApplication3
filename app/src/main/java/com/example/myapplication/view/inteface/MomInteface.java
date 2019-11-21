@@ -7,8 +7,10 @@ import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.CinemadetailsBean;
+import com.example.myapplication.model.bean.CommentBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
+import com.example.myapplication.model.bean.FeedbackBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.KeywordsBean;
 import com.example.myapplication.model.bean.LoginBean;
@@ -106,5 +108,13 @@ import com.example.myapplication.model.bean.ZhengBean;
     //关键字查询电影详情
     interface dokey extends Baseinteface{
         void success(KeywordsBean bean);
+    }
+    //查询我对电影院的评论
+    interface docommect extends Baseinteface{
+        void success(CommentBean commentBean);
+    }
+    //意见反馈
+    interface dofeed extends Baseinteface{
+        void success(FeedbackBean bean);
     }
 }
