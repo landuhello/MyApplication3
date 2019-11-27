@@ -2,7 +2,6 @@ package com.example.myapplication.model.api;
 
 import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
-import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.CinemadetailsBean;
 import com.example.myapplication.model.bean.CommentBean;
@@ -109,4 +108,6 @@ import retrofit2.http.QueryMap;
     @FormUrlEncoded
     @POST("tool/v1/verify/recordFeedBack")
     Observable<FeedbackBean> dofeed(@FieldMap Map<String,String>map,@Field("content")String content);
+
+
 }

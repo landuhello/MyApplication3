@@ -1,8 +1,6 @@
 package com.example.myapplication.view.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,6 +26,7 @@ import com.example.myapplication.presenter.LoginPresenter;
 import com.example.myapplication.view.activity.Main10Activity;
 import com.example.myapplication.view.activity.Main6Activity;
 import com.example.myapplication.view.activity.Main9Activity;
+import com.example.myapplication.view.activity.MyiderActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -156,8 +155,15 @@ import butterknife.Unbinder;
                 }
                 break;
             case R.id.myider:
+                //个人详情信息页面
+                if ("0000".equals(status)) {
+                    startActivity(new Intent(getContext(), MyiderActivity.class));
+                } else {
+                    startActivity(new Intent(getContext(), Main6Activity.class));
+                }
                 break;
             case R.id.myset:
+
                 break;
             case R.id.lin_lau:
                 //个人详情信息页面
