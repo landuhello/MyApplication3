@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 
 public class Film_review_Adapter extends RecyclerView.Adapter<Film_review_Adapter.ViewHolder> {
 
-    private List<FilmReviewBean.ResultBean> result;
+    private List<FilmReviewBean.ResultBean> result=new ArrayList<>();
 
     public void setResult(List<FilmReviewBean.ResultBean> result) {
         this.result = result;

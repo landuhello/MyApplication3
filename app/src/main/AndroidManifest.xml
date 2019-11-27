@@ -36,6 +36,7 @@
         <activity android:name=".view.activity.Main5Activity" />
         <activity android:name=".view.activity.Main4Activity" />
 
+        <activity android:name=".view.activity.Write_reviewsActivity"/>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="9zjjthjtrOwKKVpWQt8MrnY7VvW6LhqY" />

@@ -12,6 +12,7 @@ import com.example.myapplication.model.bean.CommentBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.FeedbackBean;
+import com.example.myapplication.model.bean.FilmReviewBean;
 import com.example.myapplication.model.bean.JiBean;
 import com.example.myapplication.model.bean.KeywordsBean;
 import com.example.myapplication.model.bean.LoginBean;
@@ -199,10 +200,10 @@ import retrofit2.http.HEAD;
         api.getcomment(movieId,headMap)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<CommentBean>() {
+                .subscribe(new Consumer<FilmReviewBean>() {
                     @Override
-                    public void accept(CommentBean commentBean) throws Exception {
-                       callBack.success(commentBean);
+                    public void accept(FilmReviewBean filmReviewBean) throws Exception {
+                        callBack.success(filmReviewBean);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

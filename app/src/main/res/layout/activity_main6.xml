@@ -25,14 +25,16 @@
             android:orientation="vertical"
             >
             <EditText
-                android:layout_marginTop="125dp"
+
+                android:layout_marginTop="120dp"
                 android:id="@+id/ed_login"
                 android:layout_width="312dp"
+                android:gravity="center"
                 android:layout_height="44dp"
                 android:background="@drawable/aa"
-                android:gravity="center_horizontal"
                 android:hint="请输入邮箱账号:"
                 android:textColor="#ffffff"
+                android:textColorHint="@color/colorA"
                 android:textSize="14sp"/>
         </LinearLayout>
         <LinearLayout
