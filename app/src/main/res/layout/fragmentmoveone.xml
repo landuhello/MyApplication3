@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#1c2243"
+    android:background="#141931"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -76,9 +76,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/lin"
+                android:background="#1c2243"
                 android:layout_marginTop="6dp"
                 >
                 <ImageView
+                    android:layout_marginLeft="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/iv_zheng"
@@ -87,15 +89,17 @@
                     android:background="@mipmap/yi"
                     />
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_zheng"
                     android:text="正在热映"
                     android:textColor="@color/colorA"
-                    android:layout_marginLeft="22dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_centerVertical="true"
                     />
                 <TextView
+                    android:layout_marginRight="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_geng"
@@ -112,12 +116,14 @@
                 android:layout_marginTop="10dp"
                 ></android.support.v7.widget.RecyclerView>
             <RelativeLayout
+                android:background="#1c2243"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/lin1"
                 android:layout_marginTop="6dp"
                 >
                 <ImageView
+                    android:layout_marginLeft="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/iv_ji"
@@ -131,10 +137,11 @@
                     android:id="@+id/tv_ji"
                     android:text="即将上映"
                     android:textColor="@color/colorA"
-                    android:layout_marginLeft="22dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_centerVertical="true"
                     />
                 <TextView
+                    android:layout_marginRight="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_gengone"
@@ -150,38 +157,41 @@
                 android:id="@+id/re_two"
                 android:layout_marginTop="10dp"
                 ></android.support.v7.widget.RecyclerView>
+
             <RelativeLayout
+                android:background="#1c2243"
+                android:id="@+id/lin3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/lin3"
-                android:layout_marginTop="6dp"
-                >
+                android:layout_marginTop="6dp">
+
                 <ImageView
+                    android:id="@+id/iv_ren"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/iv_ren"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
-                    android:background="@mipmap/san"
-                    />
+                    android:layout_marginLeft="24dp"
+                    android:background="@mipmap/san" />
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tv_ren"
-                    android:text="热门电影"
-                    android:textColor="@color/colorA"
-                    android:layout_marginLeft="22dp"
-                    android:layout_centerVertical="true"
-                    />
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_gengtwo"
-                    android:text="更多"
-                    android:textColor="@color/colorA"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"
+                    android:text="热门电影"
+                    android:textColor="@color/colorA" />
+
+                <TextView
+                    android:id="@+id/tv_gengtwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    />
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:text="更多"
+                    android:textColor="@color/colorA" />
             </RelativeLayout>
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"

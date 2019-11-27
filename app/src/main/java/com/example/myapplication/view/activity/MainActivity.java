@@ -13,19 +13,19 @@ import com.example.myapplication.R;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv_yin;
-    private int time=2;
-    Handler handler=new Handler(){
+    private int time = 2;
+    Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (msg.what==1){
-                if (time<=0){
-                    startActivity(new Intent(MainActivity.this,Main2Activity.class));
+            if (msg.what == 1) {
+                if (time <= 0) {
+                    startActivity(new Intent(MainActivity.this, Main2Activity.class));
                     finish();
-                }else{
+                } else {
                     time--;
-                    tv_yin.setText(time+"");
-                    handler.sendEmptyMessageDelayed(1,1000);
+                    tv_yin.setText(time + "");
+                    handler.sendEmptyMessageDelayed(1, 1000);
                 }
             }
         }
@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tv_yin = findViewById(R.id.tv_yin);
 
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 super.run();
                 Message message = new Message();
-                message.what=1;
-                handler.sendMessageDelayed(message,1000);
+                message.what = 1;
+                handler.sendMessageDelayed(message, 1000);
             }
         }.start();
     }
@@ -56,6 +56,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void yind(View view) {
-        startActivity(new Intent(MainActivity.this,Main2Activity.class));
+        startActivity(new Intent(MainActivity.this, Main2Activity.class));
     }
 }

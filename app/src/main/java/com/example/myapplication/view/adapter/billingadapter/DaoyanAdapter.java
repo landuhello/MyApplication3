@@ -56,10 +56,11 @@ public class DaoyanAdapter extends XRecyclerView.Adapter {
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView item_iv_daoyan_photo;
         TextView item_tv_daoyan_score;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-           item_iv_daoyan_photo=itemView.findViewById(R.id.item_iv_daoyan_photo);
-            item_tv_daoyan_score=itemView.findViewById(R.id.item_tv_daoyan_score);
+            item_iv_daoyan_photo = itemView.findViewById(R.id.item_iv_daoyan_photo);
+            item_tv_daoyan_score = itemView.findViewById(R.id.item_tv_daoyan_score);
         }
     }
 

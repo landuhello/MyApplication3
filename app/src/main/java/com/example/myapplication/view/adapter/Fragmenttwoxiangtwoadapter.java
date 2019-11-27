@@ -41,30 +41,30 @@ import java.util.List;
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         viewholder.textView.setText(result.get(i).getCommentUserName());
         Date date = new Date(result.get(i).getCommentTime());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd HH:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         viewholder.textView1.setText(String.valueOf(simpleDateFormat.format(date)));
-        viewholder.textView2.setText(result.get(i).getGreatNum()+"人觉得很赞");
+        viewholder.textView2.setText(result.get(i).getGreatNum() + "人觉得很赞");
         Glide.with(viewholder.itemView.getContext()).load(result.get(i).getCommentHeadPic()).into(viewholder.imageView);
         viewholder.textView3.setText(result.get(i).getCommentContent());
     }
 
     @Override
     public int getItemCount() {
-        if (result!=null){
+        if (result != null) {
             return result.size();
-        }else {
+        } else {
             return 0;
         }
 
     }
 
-    class Viewholder extends RecyclerView.ViewHolder{
+    class Viewholder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView textView;
         TextView textView1;
         TextView textView2;
-         TextView textView3;
+        TextView textView3;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);

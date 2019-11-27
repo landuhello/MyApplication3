@@ -11,7 +11,9 @@ import com.example.myapplication.model.bean.CinemadetailsBean;
 import com.example.myapplication.model.bean.CommentBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
+import com.example.myapplication.model.bean.FeedbackBean;
 import com.example.myapplication.model.bean.JiBean;
+import com.example.myapplication.model.bean.KeywordsBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.MhmoveyBean;
 import com.example.myapplication.model.bean.NearbyBean;
@@ -429,6 +431,59 @@ import retrofit2.http.HEAD;
                     @Override
                     public void accept(YanzhengBean yanzhengBean) throws Exception {
                         callBack.success(yanzhengBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //电影关键字查询电影
+    public void dokey(Map<String,Integer>map, String keyword, final CallBack callBack){
+        api.dokey(map,keyword)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<KeywordsBean>() {
+                    @Override
+                    public void accept(KeywordsBean keywordsBean) throws Exception {
+                        callBack.success(keywordsBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //查询我对电影院的评论
+    public void docommect(Map<String,String>map, Map<String,String> id, Map<String,Integer> pc, final CallBack callBack){
+        api.docomment(map,id,pc)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<CommentBean>() {
+                    @Override
+                    public void accept(CommentBean commentBean) throws Exception {
+                        callBack.success(commentBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //意见反馈
+    public void dofeed(Map<String,String>map, String content, final CallBack callBack){
+        api.dofeed(map,content)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<FeedbackBean>() {
+                    @Override
+                    public void accept(FeedbackBean feedbackBean) throws Exception {
+                        callBack.success(feedbackBean);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

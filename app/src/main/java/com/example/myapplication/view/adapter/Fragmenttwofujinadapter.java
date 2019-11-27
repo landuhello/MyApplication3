@@ -21,8 +21,8 @@ import java.util.List;
  *@Date: 时间
  *@Description:功能
  * */public class Fragmenttwofujinadapter extends RecyclerView.Adapter<Fragmenttwofujinadapter.Viewholder> {
-    private List<NearbyBean.ResultBean> result=new ArrayList<>();
-    private double km=0;
+    private List<NearbyBean.ResultBean> result = new ArrayList<>();
+    private double km = 0;
     private int id;
 
     public void setResult(List<NearbyBean.ResultBean> result) {
@@ -41,14 +41,14 @@ import java.util.List;
     public void onBindViewHolder(@NonNull Viewholder viewholder, final int i) {
         viewholder.textView.setText(result.get(i).getName());
         viewholder.textView1.setText(result.get(i).getAddress());
-        viewholder.textView2.setText(Double.valueOf(result.get(i).getDistance()/1000)+"km");
+        viewholder.textView2.setText(Double.valueOf(result.get(i).getDistance() / 1000) + "km");
         Glide.with(viewholder.itemView.getContext()).load(result.get(i).getLogo()).into(viewholder.imageView);
         id = result.get(i).getId();
         viewholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (onclicklisten!=null){
-                    onclicklisten.success(id,i);
+                if (onclicklisten != null) {
+                    onclicklisten.success(id, i);
                 }
             }
         });
@@ -56,15 +56,15 @@ import java.util.List;
 
     @Override
     public int getItemCount() {
-        if (result!=null){
+        if (result != null) {
             return result.size();
-        }else {
+        } else {
             return 0;
         }
 
     }
 
-    class Viewholder extends RecyclerView.ViewHolder{
+    class Viewholder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView textView;
@@ -79,11 +79,12 @@ import java.util.List;
             textView2 = itemView.findViewById(R.id.two_te2);
         }
     }
+
     //条目点击接口回调
     private Onclicklisten onclicklisten;
 
-    public interface Onclicklisten{
-        void success(int id,int i);
+    public interface Onclicklisten {
+        void success(int id, int i);
     }
 
     public void setOnclicklisten(Onclicklisten onclicklisten) {

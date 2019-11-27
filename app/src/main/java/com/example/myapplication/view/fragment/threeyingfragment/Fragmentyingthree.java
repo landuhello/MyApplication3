@@ -32,14 +32,14 @@ public class Fragmentyingthree extends BaseFragment<BannerPresenter> implements 
     Unbinder unbinder;
     private LinearLayoutManager linearLayoutManager;
     private ReyingthreeAdapter reyingthreeAdapter;
-    private List<RmenBean.ResultBean> rmenlist=new ArrayList<>();
+    private List<RmenBean.ResultBean> rmenlist = new ArrayList<>();
 
     @Override
     protected void initData() {
         f.setRmen();
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyRmen.setLayoutManager(linearLayoutManager);
-        reyingthreeAdapter = new ReyingthreeAdapter(getContext(),rmenlist);
+        reyingthreeAdapter = new ReyingthreeAdapter(getContext(), rmenlist);
         recyRmen.setAdapter(reyingthreeAdapter);
 
 

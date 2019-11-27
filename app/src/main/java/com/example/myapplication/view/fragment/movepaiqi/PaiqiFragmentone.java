@@ -78,11 +78,11 @@ public class PaiqiFragmentone extends Fragment implements MomInteface.dopaiqi {
         id = sharedPreferences.getInt("id", 0);
         paiqiPresenter = new PaiqiPresenter();
         paiqiPresenter.bind(this);
-        Map<String,Integer>map=new HashMap<>();
-        map.put("page",page);
-        map.put("count",10);
-        paiqiPresenter.dopaiqi(id,map);
-        Log.i("aaaa",id+"");
+        Map<String, Integer> map = new HashMap<>();
+        map.put("page", page);
+        map.put("count", 10);
+        paiqiPresenter.dopaiqi(id, map);
+        Log.i("aaaa", id + "");
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         paiqi.setLayoutManager(manager);
         fragmentpaiqiAdapter = new FragmentpaiqiAdapter();

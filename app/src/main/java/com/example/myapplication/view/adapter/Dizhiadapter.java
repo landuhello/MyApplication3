@@ -28,7 +28,7 @@ import java.util.List;
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.dizhilayout,viewGroup, false);
+        View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.dizhilayout, viewGroup, false);
         Viewholder viewholder = new Viewholder(inflate);
         return viewholder;
     }
@@ -40,8 +40,8 @@ import java.util.List;
         viewholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (onclicklisten!=null){
-                    onclicklisten.success(id,i);
+                if (onclicklisten != null) {
+                    onclicklisten.success(id, i);
                 }
             }
         });
@@ -49,17 +49,17 @@ import java.util.List;
 
     @Override
     public int getItemCount() {
-        if (result!=null){
+        if (result != null) {
             return result.size();
-        }else {
+        } else {
             return 0;
         }
 
     }
 
-    class Viewholder extends RecyclerView.ViewHolder{
+    class Viewholder extends RecyclerView.ViewHolder {
 
-         TextView textView;
+        TextView textView;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
@@ -67,12 +67,14 @@ import java.util.List;
 
         }
     }
+
     //条目点击接口回调
     private Onclicklisten onclicklisten;
 
-    public interface Onclicklisten{
-        void success(int id,int i);
+    public interface Onclicklisten {
+        void success(int id, int i);
     }
+
     public void setOnclicklisten(Onclicklisten onclicklisten) {
         this.onclicklisten = onclicklisten;
     }

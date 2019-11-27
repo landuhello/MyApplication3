@@ -25,6 +25,10 @@
         android:roundIcon="@mipmap/yang"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".view.activity.Main10Activity" />
+        <activity android:name=".view.activity.SearchActivity" />
+
         <activity android:name=".view.activity.Main9Activity" />
         <activity android:name=".view.activity.Main8Activity" />
         <activity android:name=".view.activity.Main7Activity" />
@@ -62,7 +66,10 @@
             android:enabled="true"
             android:process=":remote" />
 
+
         <activity android:name=".view.activity.ByReginActivity"></activity>
+
+
 
 
     </application>

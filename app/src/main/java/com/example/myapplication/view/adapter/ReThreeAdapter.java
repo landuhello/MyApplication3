@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ReThreeAdapter extends RecyclerView.Adapter {
     private Context context;
-    private List<RmenBean.ResultBean> list3=new ArrayList<>();
+    private List<RmenBean.ResultBean> list3 = new ArrayList<>();
 
     public ReThreeAdapter(Context context) {
         this.context = context;
@@ -40,7 +40,7 @@ public class ReThreeAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         ViewHolder viewHolder1 = (ViewHolder) viewHolder;
         viewHolder1.tv_rmenyi.setText(list3.get(i).getName());
-        viewHolder1.tv_rmenfen.setText(list3.get(i).getScore()+""+"分");
+        viewHolder1.tv_rmenfen.setText(list3.get(i).getScore() + "" + "分");
         Glide.with(context)
                 .load(list3.get(i).getImageUrl())
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
@@ -48,29 +48,30 @@ public class ReThreeAdapter extends RecyclerView.Adapter {
     }
 
     public void getDat(List<RmenBean.ResultBean> result) {
-        if (result!=null&&result.size()>0){
+        if (result != null && result.size() > 0) {
             list3.addAll(result);
         }
         notifyDataSetChanged();
     }
+
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_rmenfen,tv_rmenyi;
+        TextView tv_rmenfen, tv_rmenyi;
         ImageView iv_rmenyi;
         Button but_rmenyi;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_rmenfen=itemView.findViewById(R.id.tv_rmenfen);
-            tv_rmenyi=itemView.findViewById(R.id.tv_rmenyi);
-            iv_rmenyi=itemView.findViewById(R.id.iv_rmenyi);
-            but_rmenyi=itemView.findViewById(R.id.but_rmenyi);
+            tv_rmenfen = itemView.findViewById(R.id.tv_rmenfen);
+            tv_rmenyi = itemView.findViewById(R.id.tv_rmenyi);
+            iv_rmenyi = itemView.findViewById(R.id.iv_rmenyi);
+            but_rmenyi = itemView.findViewById(R.id.but_rmenyi);
         }
     }
+
     @Override
     public int getItemCount() {
         return list3.size();
     }
-
-
 
 
 }

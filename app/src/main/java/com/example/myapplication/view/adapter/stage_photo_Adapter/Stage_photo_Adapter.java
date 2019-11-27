@@ -18,7 +18,7 @@ import com.example.myapplication.view.adapter.billingadapter.DaoyanAdapter;
 
 import java.util.List;
 
-public class Stage_photo_Adapter extends RecyclerView.Adapter{
+public class Stage_photo_Adapter extends RecyclerView.Adapter {
 
     private List<String> posterlist;
     private Context context;
@@ -54,9 +54,10 @@ public class Stage_photo_Adapter extends RecyclerView.Adapter{
 
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView item_iv_juzhao_photo;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            item_iv_juzhao_photo=itemView.findViewById(R.id.item_iv_juzhao_photo);
+            item_iv_juzhao_photo = itemView.findViewById(R.id.item_iv_juzhao_photo);
         }
     }
 }

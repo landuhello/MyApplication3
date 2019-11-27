@@ -66,20 +66,20 @@ public class IntroduceFragment extends BaseFragment<DetailPresenter> implements 
     public void ok(DetilBean detilBean) {
         DetilBean.ResultBean result = detilBean.result;
         tvJuqing.setText(detilBean.result.summary);
-        tvDaoyin.setText("导演（"+detilBean.result.movieDirector.size()+")");
+        tvDaoyin.setText("导演（" + detilBean.result.movieDirector.size() + ")");
 
         List<DetilBean.ResultBean.MovieDirectorBean> movieDirector = detilBean.result.movieDirector;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        DaoyanAdapter daoyanAdapter = new DaoyanAdapter(movieDirector,getContext());
+        DaoyanAdapter daoyanAdapter = new DaoyanAdapter(movieDirector, getContext());
         itemDaoyinRec.setLayoutManager(linearLayoutManager);
         itemDaoyinRec.setAdapter(daoyanAdapter);
 
-        tvYanyuan.setText("演员("+detilBean.result.movieActor.size()+")");
+        tvYanyuan.setText("演员(" + detilBean.result.movieActor.size() + ")");
         List<DetilBean.ResultBean.MovieActorBean> movieActor = detilBean.result.movieActor;
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
         linearLayoutManager1.setOrientation(RecyclerView.HORIZONTAL);
-        YanyuanAdapter yanyuanAdapter = new YanyuanAdapter(movieActor,getContext());
+        YanyuanAdapter yanyuanAdapter = new YanyuanAdapter(movieActor, getContext());
         itemYanyuanRec.setLayoutManager(linearLayoutManager1);
         itemYanyuanRec.setAdapter(yanyuanAdapter);
 

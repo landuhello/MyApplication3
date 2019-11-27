@@ -2,9 +2,8 @@ package com.example.myapplication.view.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +15,7 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.greendao.DaoBeanDao;
-import com.example.myapplication.greendao.DaoMaster;
-import com.example.myapplication.greendao.DaoSession;
-import com.example.myapplication.model.bean.DaoBean;
-import com.example.myapplication.model.bean.EventBean;
 import com.example.myapplication.model.bean.LoginBean;
-import com.example.myapplication.model.bean.StickBean;
 import com.example.myapplication.model.http.EncryptUtil;
 import com.example.myapplication.presenter.LoginPresenter;
 import com.example.myapplication.view.inteface.MomInteface;
@@ -29,10 +23,8 @@ import com.example.myapplication.view.inteface.MomInteface;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class Main6Activity extends BaseActivity<LoginPresenter> implements MomInteface.dologin {
@@ -55,6 +47,8 @@ public class Main6Activity extends BaseActivity<LoginPresenter> implements MomIn
     private DaoBeanDao daoBeanDao;
     private String mi;
     private String email;
+    private int userId;
+    private String sessionId;
 
     @Override
     protected int initview() {
@@ -70,20 +64,24 @@ public class Main6Activity extends BaseActivity<LoginPresenter> implements MomIn
     protected void initdata() {
         SharedPreferences bw = getSharedPreferences("bw", MODE_MULTI_PROCESS);
         SharedPreferences.Editor edit = bw.edit();
-        edit.putString("login",login);
-        edit.putString("mima",mi);
+
+        edit.putInt("login",userId);
+        edit.putString("mima",sessionId);
         edit.commit();
     }
 
     @Override
     public void success(LoginBean bean) {
-        if (bean!=null&&"0000".equals(bean.getStatus())){
-            startActivity(new Intent(this,Main2Activity.class));
+        if (bean != null && "0000".equals(bean.getStatus())) {
+            startActivity(new Intent(this, Main2Activity.class));
+            userId = bean.getResult().getUserId();
+            sessionId = bean.getResult().getSessionId();
+            Log.i("login","userId:"+ userId +"sessionId"+ sessionId);
             email = bean.getResult().getUserInfo().getEmail();
             mima = edMima.getText().toString().trim();
             mi = EncryptUtil.encrypt(mima);
             EventBus.getDefault().postSticky(bean);
-        }else {
+        } else {
             Toast.makeText(this, bean.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
@@ -101,14 +99,15 @@ public class Main6Activity extends BaseActivity<LoginPresenter> implements MomIn
             case R.id.but_deng:
                 login = edLogin.getText().toString().trim();
                 mima = edMima.getText().toString().trim();
-                if (TextUtils.isEmpty(login) || TextUtils.isEmpty(mima)){
+                if (TextUtils.isEmpty(login) || TextUtils.isEmpty(mima)) {
                     Toast.makeText(this, "输入为空", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     mi = EncryptUtil.encrypt(mima);
                     HashMap<String, String> map = new HashMap<>();
                     map.put("email", login);
                     map.put("pwd", mi);
                     t.dologin(map);
+                    Log.i("pwd","密码是："+mi);
                 }
                 break;
             case R.id.wx_login:

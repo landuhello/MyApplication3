@@ -13,6 +13,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
 import com.example.myapplication.model.api.Api;
 import com.example.myapplication.model.bean.CommentBean;
+import com.example.myapplication.model.bean.FilmReviewBean;
 import com.example.myapplication.presenter.CommentPresenter;
 import com.example.myapplication.view.activity.DetailActivity;
 import com.example.myapplication.view.adapter.film_review_adapter.Film_review_Adapter;
@@ -32,6 +33,7 @@ public class Film_reviewFragment extends BaseFragment<CommentPresenter> implemen
     RecyclerView filmRec;
     Unbinder unbinder;
     private Film_review_Adapter film_review_adapter;
+    private List<FilmReviewBean.ResultBean> result;
 
     @Override
     protected void initData() {
@@ -61,13 +63,13 @@ public class Film_reviewFragment extends BaseFragment<CommentPresenter> implemen
     }
 
     @Override
-    public void success(CommentBean commentBean) {
-        List<CommentBean.ResultBean> filmList = commentBean.getResult();
+    public void success(FilmReviewBean filmReviewBean) {
+        result = filmReviewBean.getResult();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         filmRec.setLayoutManager(linearLayoutManager);
         film_review_adapter = new Film_review_Adapter();
         filmRec.setAdapter(film_review_adapter);
-        film_review_adapter.setFilmList(filmList);
+        film_review_adapter.setResult(result);
         film_review_adapter.notifyDataSetChanged();
     }
 

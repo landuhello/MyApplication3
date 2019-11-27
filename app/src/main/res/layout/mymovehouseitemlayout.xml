@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="312dp"
+    android:background="#1c2243"
+    android:layout_height="231dp"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="20dp"
+    >
+    <LinearLayout
+        android:layout_width="312dp"
+        android:layout_height="121dp"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/movehouse_im"
+            android:layout_width="70dp"
+            android:layout_height="70dp"></ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="121dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/myhouse_name"
+                android:paddingLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:textColor="#ffffff"
+                android:text="悲伤逆流成河"
+                />
+            <TextView
+                android:id="@+id/myhouse_daoyan"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textSize="12sp"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text="导演：落落"
+                />
+
+            <TextView
+                android:textSize="12sp"
+                android:id="@+id/myhouse_pinfen"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="评分：9.4分"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_gravity="center"
+        android:background="#ffffff"
+        android:layout_width="292dp"
+        android:layout_height="2dp"></LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:text="我的评价"
+            />
+        <TextView
+            android:id="@+id/myhouse_pinglun"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="292dp"
+            android:layout_height="32dp"
+            android:textSize="11sp"
+            android:textColor="#ffffff"
+            android:text="拍的不错，看过原著，完美的体现，把现实诉说淋漓尽致，这是一个比悲伤更悲伤的故事。"
+            />
+<TextView
+    android:gravity="right"
+    android:layout_marginTop="10dp"
+    android:id="@+id/mymovehouse_time"
+    android:textSize="11sp"
+    android:textColor="#ffffff"
+    android:text="2019-06-04 12:10"
+    android:layout_width="302dp"
+    android:layout_height="wrap_content">
+
+</TextView>
+    </LinearLayout>
+
+</LinearLayout>

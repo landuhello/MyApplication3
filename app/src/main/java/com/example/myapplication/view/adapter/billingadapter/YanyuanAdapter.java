@@ -17,7 +17,7 @@ import com.example.myapplication.model.bean.DetilBean;
 
 import java.util.List;
 
-public class YanyuanAdapter extends RecyclerView.Adapter{
+public class YanyuanAdapter extends RecyclerView.Adapter {
     private List<DetilBean.ResultBean.MovieActorBean> yanyuanlist;
     private Context context;
 
@@ -51,15 +51,14 @@ public class YanyuanAdapter extends RecyclerView.Adapter{
     }
 
 
-
-
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView item_iv_yanyuan_photo;
         TextView item_tv_yanyuan_score;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            item_iv_yanyuan_photo=itemView.findViewById(R.id.item_iv_yanyuan_photo);
-            item_tv_yanyuan_score=itemView.findViewById(R.id.item_tv_yanyuan_score);
+            item_iv_yanyuan_photo = itemView.findViewById(R.id.item_iv_yanyuan_photo);
+            item_tv_yanyuan_score = itemView.findViewById(R.id.item_tv_yanyuan_score);
         }
     }
 }

@@ -37,9 +37,9 @@ import java.util.List;
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         viewholder.textView.setText(result.get(i).getName());
-        viewholder.textView1.setText("导演："+result.get(i).getDirector());
-        viewholder.textView2.setText("主演："+result.get(i).getStarring());
-        viewholder.textView3.setText("评分："+result.get(i).getScore()+"分");
+        viewholder.textView1.setText("导演：" + result.get(i).getDirector());
+        viewholder.textView2.setText("主演：" + result.get(i).getStarring());
+        viewholder.textView3.setText("评分：" + result.get(i).getScore() + "分");
         Glide.with(viewholder.itemView.getContext()).load(result.get(i).getImageUrl()).into(viewholder.imageView);
 
 
@@ -47,15 +47,15 @@ import java.util.List;
 
     @Override
     public int getItemCount() {
-        if (result!=null){
+        if (result != null) {
             return result.size();
-        }else {
+        } else {
             return 0;
         }
 
     }
 
-    class Viewholder extends RecyclerView.ViewHolder{
+    class Viewholder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView textView;

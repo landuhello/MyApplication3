@@ -56,7 +56,7 @@ public class Stage_photoFragment extends BaseFragment<DetailPresenter> implement
     @Override
     public void ok(DetilBean detilBean) {
         List<String> posterList = detilBean.result.posterList;
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
         Stage_photo_Adapter stage_photo_adapter = new Stage_photo_Adapter(posterList, getContext());
         stagePhotoRec.setLayoutManager(gridLayoutManager);
         stagePhotoRec.setAdapter(stage_photo_adapter);

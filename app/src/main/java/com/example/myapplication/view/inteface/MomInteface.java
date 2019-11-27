@@ -11,7 +11,10 @@ import com.example.myapplication.model.bean.CinemadetailsBean;
 import com.example.myapplication.model.bean.CommentBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
+import com.example.myapplication.model.bean.FeedbackBean;
+import com.example.myapplication.model.bean.FilmReviewBean;
 import com.example.myapplication.model.bean.JiBean;
+import com.example.myapplication.model.bean.KeywordsBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.MhmoveyBean;
 import com.example.myapplication.model.bean.NearbyBean;
@@ -50,62 +53,83 @@ import com.example.myapplication.model.bean.ZhengBean;
     interface dopaiqi extends Baseinteface{
          void success(PaiqiBean bean);
      }
-     //首页
-    interface IBanner extends Baseinteface{
+
+
+
+    interface IBanner extends Baseinteface {
         void ok(BannerBean bannerBean);
+
         void no(String mag);
+
         void rey(ZhengBean zhengBean);
+
         void reyji(JiBean jiBean);
+
         void remen(RmenBean rmenBean);
     }
     //电影评论
     interface IComment extends Baseinteface{
-         void success(CommentBean commentBean);
+         void success(FilmReviewBean filmReviewBean);
     }
     //根据影厅id 查询座位信息
     interface ISeate extends Baseinteface{
          void success(SeatleBean seatleBean);
     }
+
     //电影详情
-    interface IDetail extends Baseinteface{
-         void ok(DetilBean detilBean);
-         void no(String msg);
+    interface IDetail extends Baseinteface {
+        void ok(DetilBean detilBean);
+
+        void no(String msg);
     }
     //查询区域列表
     interface IRegionListView extends Baseinteface{
         void regionSuccess(RegionListBean regionListBean);
         void cinemaByRegionSuccess(CinemaByRegionBean cinemaByRegionBean);
     }
+
     //地址
-    interface docindizhi extends Baseinteface{
-         void success(CindizhiBean bean);
+    interface docindizhi extends Baseinteface {
+        void success(CindizhiBean bean);
     }
     //查询区域列表
-    interface dotool extends Baseinteface{
-         void success(ToolBean toolBean);
+    interface dotool extends Baseinteface {
+        void success(ToolBean toolBean);
     }
     //区域查询
-    interface doquyucx extends Baseinteface{
-         void success(QuyuchaxBean bean);
+    interface doquyucx extends Baseinteface {
+        void success(QuyuchaxBean bean);
     }
     //日期
-    interface doday extends Baseinteface{
-         void success(DayBean bean);
+    interface doday extends Baseinteface {
+        void success(DayBean bean);
     }
     //电影明细
-    interface domx extends Baseinteface{
-         void success(CinemadetailsBean bean);
+    interface domx extends Baseinteface {
+        void success(CinemadetailsBean bean);
     }
     //模糊查询电影院
-    interface domhmovey extends Baseinteface{
-         void success(MhmoveyBean bean);
+    interface domhmovey extends Baseinteface {
+        void success(MhmoveyBean bean);
     }
     //注册
-    interface doreg extends Baseinteface{
-         void success(RegBean bean);
+    interface doreg extends Baseinteface {
+        void success(RegBean bean);
     }
     //验证码
-    interface doyan extends Baseinteface{
-         void success(YanzhengBean bean);
+    interface doyan extends Baseinteface {
+        void success(YanzhengBean bean);
+    }
+    //关键字查询电影详情
+    interface dokey extends Baseinteface{
+        void success(KeywordsBean bean);
+    }
+    //查询我对电影院的评论
+    interface docommect extends Baseinteface{
+        void success(CommentBean commentBean);
+    }
+    //意见反馈
+    interface dofeed extends Baseinteface{
+        void success(FeedbackBean bean);
     }
 }

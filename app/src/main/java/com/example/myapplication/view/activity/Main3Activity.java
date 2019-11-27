@@ -38,7 +38,7 @@ public class Main3Activity extends AppCompatActivity implements MomInteface.doda
     private ArrayList<Fragment> list;
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener = new MyLocationListener();
-    private List<String> result=new ArrayList<>();
+    private List<String> result = new ArrayList<>();
     private DayPresenter dayPresenter;
 
     @Override
@@ -122,7 +122,6 @@ public class Main3Activity extends AppCompatActivity implements MomInteface.doda
     }
 
 
-
     @OnClick(R.id.fanhui)
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -135,7 +134,7 @@ public class Main3Activity extends AppCompatActivity implements MomInteface.doda
     @Override
     public void success(DayBean bean) {
         result = bean.getResult();
-        for (int i = 0; i <result.size() ; i++) {
+        for (int i = 0; i < result.size(); i++) {
             String s = result.get(i);
             paiqiTab.getTabAt(i).setText(s);
 

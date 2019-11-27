@@ -1,12 +1,11 @@
 package com.example.myapplication.view.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,37 +13,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.R;
 import com.example.myapplication.greendao.DaoBeanDao;
 import com.example.myapplication.greendao.DaoMaster;
 import com.example.myapplication.greendao.DaoSession;
 import com.example.myapplication.model.bean.LoginBean;
-import com.example.myapplication.model.bean.StickBean;
 import com.example.myapplication.presenter.LoginPresenter;
-import com.example.myapplication.view.activity.Main2Activity;
-import com.example.myapplication.view.activity.Main3Activity;
-import com.example.myapplication.view.activity.Main4Activity;
-import com.example.myapplication.view.activity.Main5Activity;
+import com.example.myapplication.view.activity.Main10Activity;
 import com.example.myapplication.view.activity.Main6Activity;
 import com.example.myapplication.view.activity.Main9Activity;
-import com.example.myapplication.view.activity.MainActivity;
-import com.example.myapplication.view.inteface.MomInteface;
+
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /*
@@ -68,27 +58,28 @@ import butterknife.Unbinder;
     ImageView imagMovieSpan;
     @BindView(R.id.lin_lay)
     LinearLayout linLay;
-    @BindView(R.id.line_attention)
-    LinearLayout lineAttention;
-    @BindView(R.id.line_subscribe)
-    LinearLayout lineSubscribe;
-    @BindView(R.id.line_ticket)
-    LinearLayout lineTicket;
-    @BindView(R.id.line_seek_movie)
-    LinearLayout lineSeekMovie;
-    @BindView(R.id.line_discuss)
-    LinearLayout lineDiscuss;
-    @BindView(R.id.line_tickling)
-    LinearLayout lineTickling;
-    @BindView(R.id.line_install)
-    LinearLayout lineInstall;
     Unbinder unbinder;
-
+    @BindView(R.id.myattent)
+    LinearLayout myattent;
+    @BindView(R.id.mymake)
+    LinearLayout mymake;
+    @BindView(R.id.mybuy)
+    LinearLayout mybuy;
+    @BindView(R.id.mylookmove)
+    LinearLayout mylookmove;
+    @BindView(R.id.mycomment)
+    LinearLayout mycomment;
+    @BindView(R.id.myider)
+    LinearLayout myider;
+    @BindView(R.id.myset)
+    LinearLayout myset;
     private LoginPresenter loginPresenter;
     private DaoBeanDao daoBeanDao;
     private String login;
     private String mima;
     private String status;
+    private int userId;
+    private String sessionId;
 
     @Nullable
     @Override
@@ -99,6 +90,8 @@ import butterknife.Unbinder;
         DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
         DaoSession daoSession = daoMaster.newSession();
         daoBeanDao = daoSession.getDaoBeanDao();
+
+
         return inflate;
     }
 
@@ -106,7 +99,6 @@ import butterknife.Unbinder;
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         initview();
         super.onActivityCreated(savedInstanceState);
-
     }
 
     @Override
@@ -114,14 +106,18 @@ import butterknife.Unbinder;
         EventBus.getDefault().register(this);
         super.onStart();
     }
-    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    public void dorl(LoginBean loginBean){
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void dorl(LoginBean loginBean) {
         Glide.with(getContext()).load(loginBean.getResult().getUserInfo().getHeadPic())
                 .apply(RequestOptions.bitmapTransform(new CircleCrop())).into(imageQwe);
         textQweName.setText(loginBean.getResult().getUserInfo().getNickName());
         status = loginBean.getStatus();
-
+        userId = loginBean.getResult().getUserId();
+        sessionId = loginBean.getResult().getSessionId();
+        Log.i("sessionId",sessionId);
     }
+
     @Override
     public void onStop() {
         EventBus.getDefault().unregister(this);
@@ -130,16 +126,6 @@ import butterknife.Unbinder;
 
     private void initview() {
 
-        linLau.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if ("0000".equals(status)){
-                    startActivity(new Intent(getContext(),Main9Activity.class));
-                }else {
-                    startActivity(new Intent(getContext(), Main6Activity.class));
-                }
-            }
-        });
     }
 
     @Override
@@ -147,6 +133,41 @@ import butterknife.Unbinder;
         super.onDestroyView();
         unbinder.unbind();
     }
+    //个人页面点击跳转详情
+    @OnClick({R.id.myattent, R.id.mymake, R.id.mybuy, R.id.mylookmove, R.id.mycomment, R.id.myider, R.id.myset,R.id.lin_lau})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.myattent:
+                break;
+            case R.id.mymake:
+                break;
+            case R.id.mybuy:
+                break;
+            case R.id.mylookmove:
+                break;
+            case R.id.mycomment:
+                if ("0000".equals(status)) {
+                    //我对电影院的意见
+                    startActivity(new Intent(getContext(), Main10Activity.class));
 
+                } else {
+                    startActivity(new Intent(getContext(), Main6Activity.class));
+                }
+                break;
+            case R.id.myider:
+                               break;
+            case R.id.myset:
+
+                break;
+            case R.id.lin_lau:
+                //个人详情信息页面
+                if ("0000".equals(status)) {
+                    startActivity(new Intent(getContext(), Main9Activity.class));
+                } else {
+                    startActivity(new Intent(getContext(), Main6Activity.class));
+                }
+                break;
+        }
+    }
 
 }

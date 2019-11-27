@@ -2,14 +2,16 @@ package com.example.myapplication.model.api;
 
 import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
-import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
 import com.example.myapplication.model.bean.CinemaByRegionBean;
 import com.example.myapplication.model.bean.CinemadetailsBean;
 import com.example.myapplication.model.bean.CommentBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
+import com.example.myapplication.model.bean.FeedbackBean;
+import com.example.myapplication.model.bean.FilmReviewBean;
 import com.example.myapplication.model.bean.JiBean;
+import com.example.myapplication.model.bean.KeywordsBean;
 import com.example.myapplication.model.bean.LoginBean;
 import com.example.myapplication.model.bean.MhmoveyBean;
 import com.example.myapplication.model.bean.NearbyBean;
@@ -31,6 +33,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -102,7 +105,7 @@ import retrofit2.http.QueryMap;
     Observable<MhmoveyBean> domhmovey(@QueryMap Map<String,Integer>map,@Query("cinemaName")String cinemaName);
     //评论
     @GET("movie/v2/findAllMovieComment?movieId=22&page=1&count=10")
-    Observable<CommentBean> getcomment(@Query("movieId") int movieId , @QueryMap Map<String,Integer> headMap);
+    Observable<FilmReviewBean> getcomment(@Query("movieId") int movieId , @QueryMap Map<String,Integer> headMap);
     //查询区域列表
     @GET("tool2/findRegionList")
     Observable<RegionListBean> regionList();
@@ -114,6 +117,16 @@ import retrofit2.http.QueryMap;
     //根据影厅id 查询座位信息
     @GET("movie/v2/findSeatInfo")
     Observable<SeatleBean> Seatle(@Query("hallId") int hallId);
+    //根据电影关键字查找电影详情
+    @GET("movie/v2/findMovieByKeyword")
+    Observable<KeywordsBean> dokey(@QueryMap Map<String,Integer>map,@Query("keyword")String keyword);
+    //查询影院评论
+    @GET("user/v2/verify/findMyCinemaCommentList")
+    Observable<CommentBean> docomment(@HeaderMap Map<String,String>map,@QueryMap Map<String,String> id,@QueryMap Map<String,Integer> pc);
+    //意见反馈
+    @FormUrlEncoded
+    @POST("tool/v1/verify/recordFeedBack")
+    Observable<FeedbackBean> dofeed(@FieldMap Map<String,String>map,@Field("content")String content);
 
 
 }

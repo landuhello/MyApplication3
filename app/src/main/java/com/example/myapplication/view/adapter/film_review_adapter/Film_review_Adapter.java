@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.R;
 import com.example.myapplication.model.bean.CommentBean;
+import com.example.myapplication.model.bean.FilmReviewBean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,11 +26,10 @@ import butterknife.ButterKnife;
 
 public class Film_review_Adapter extends RecyclerView.Adapter<Film_review_Adapter.ViewHolder> {
 
-    private List<CommentBean.ResultBean> filmList=new ArrayList<>();
-    private Context context;
+    private List<FilmReviewBean.ResultBean> result;
 
-    public void setFilmList(List<CommentBean.ResultBean> filmList) {
-        this.filmList = filmList;
+    public void setResult(List<FilmReviewBean.ResultBean> result) {
+        this.result = result;
     }
 
     @NonNull
@@ -43,22 +43,22 @@ public class Film_review_Adapter extends RecyclerView.Adapter<Film_review_Adapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         ViewHolder viewHolder1 = viewHolder;
-        viewHolder1.itemFilmTvCommentusername.setText(filmList.get(i).getCommentUserName());
-        viewHolder1.itemFilmTvCommentcontent.setText(filmList.get(i).getCommentContent());
-        viewHolder1.itemFilmTvGreatnum.setText(filmList.get(i).getGreatNum()+"");
-        viewHolder1.itemFilmTvReplynum.setText("等"+filmList.get(i).getReplyNum()+"人进行了回复");
-        long commentTime = filmList.get(i).getCommentTime();
+        viewHolder1.itemFilmTvCommentusername.setText(result.get(i).getCommentUserName());
+        viewHolder1.itemFilmTvCommentcontent.setText(result.get(i).getCommentContent());
+        viewHolder1.itemFilmTvGreatnum.setText(result.get(i).getGreatNum()+"");
+        viewHolder1.itemFilmTvReplynum.setText("等"+result.get(i).getReplyNum()+"人进行了回复");
+        long commentTime = result.get(i).getCommentTime();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");
         String time1 = sdf.format(commentTime);
         viewHolder1.itemFilmTvCommenttime.setText(time1);
-        final int isGreat = filmList.get(i).getIsGreat();
+        final int isGreat = result.get(i).getIsGreat();
         if (isGreat==1){
             Glide.with(viewHolder1.itemView.getContext()).load(R.drawable.greats).into(viewHolder1.itemFilmIvIsgreat);
         }else{
             Glide.with(viewHolder1.itemView.getContext()).load(R.drawable.great).into(viewHolder1.itemFilmIvIsgreat);
         }
 
-        List<String> replyHeadPic = filmList.get(i).getReplyHeadPic();
+        List<String> replyHeadPic = result.get(i).getReplyHeadPic();
         for (int j = 0; j < replyHeadPic.size(); j++) {
             if (replyHeadPic.size()>=5){
                 Glide.with(viewHolder1.itemView.getContext()).load(replyHeadPic.get(0)).apply(RequestOptions.circleCropTransform()).into(viewHolder1.itemFilmIvImage1);
@@ -82,7 +82,7 @@ public class Film_review_Adapter extends RecyclerView.Adapter<Film_review_Adapte
                 Glide.with(viewHolder1.itemView.getContext()).load(replyHeadPic.get(0)).apply(RequestOptions.circleCropTransform()).into(viewHolder1.itemFilmIvImage1);
             }
         }
-       Glide.with(viewHolder1.itemView.getContext()).load(filmList.get(i).getCommentHeadPic()).apply(RequestOptions.circleCropTransform()).into(viewHolder1.itemFilmIvComment);
+       Glide.with(viewHolder1.itemView.getContext()).load(result.get(i).getCommentHeadPic()).apply(RequestOptions.circleCropTransform()).into(viewHolder1.itemFilmIvComment);
         viewHolder1.itemFilmIvIsgreat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +91,7 @@ public class Film_review_Adapter extends RecyclerView.Adapter<Film_review_Adapte
                 }
             }
         });
-        double score = filmList.get(i).getScore();
+        double score = result.get(i).getScore();
         double floor = Math.floor(score);
         float score1 = (float) (floor / 2);
         viewHolder1.itemFilmRbRatingbar.setRating(score1);
@@ -101,7 +101,7 @@ public class Film_review_Adapter extends RecyclerView.Adapter<Film_review_Adapte
 
     @Override
     public int getItemCount() {
-        return filmList.size();
+        return result.size();
     }
     class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_film_iv_comment)

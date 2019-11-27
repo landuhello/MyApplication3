@@ -57,15 +57,15 @@ import butterknife.Unbinder;
     }
 
     private void initview() {
-        Map<String,String>map=new HashMap<>();
-        map.put("longitude","116.30551391385724");
-        map.put("latitude","40.04571807462411");
-        Map<String,Integer>nearmap=new HashMap<>();
-        nearmap.put("page",1);
-        nearmap.put("count",10);
+        Map<String, String> map = new HashMap<>();
+        map.put("longitude", "116.30551391385724");
+        map.put("latitude", "40.04571807462411");
+        Map<String, Integer> nearmap = new HashMap<>();
+        nearmap.put("page", 1);
+        nearmap.put("count", 10);
         nearPresenter = new NearPresenter();
         nearPresenter.bind(this);
-        nearPresenter.donear(map,nearmap);
+        nearPresenter.donear(map, nearmap);
     }
 
     private void initdata() {
@@ -86,16 +86,18 @@ import butterknife.Unbinder;
                 address = result.get(i).getAddress();
                 name = result.get(i).getName();
                 id1 = result.get(i).getId();
-                EventBus.getDefault().postSticky(new StickBean(address,name,id1,null,null));
+                EventBus.getDefault().postSticky(new StickBean(address, name, id1, null, null));
             }
         });
     }
+
     @Override
     public void success(NearbyBean nearbyBean) {
         result = nearbyBean.getResult();
         fragmenttwofujinadapter.setResult(result);
         fragmenttwofujinadapter.notifyDataSetChanged();
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1c2243"
+    android:background="#141931"
     tools:context=".view.fragment.ThreeFragment">
 
     <RelativeLayout
@@ -110,19 +110,21 @@
         android:layout_height="235dp">
 
         <LinearLayout
-            android:gravity="center_vertical"
             android:layout_weight="1"
+
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="312dp"
+            android:layout_height="46dp">
 
             <LinearLayout
-                android:id="@+id/line_attention"
                 android:layout_weight="1"
+                android:id="@+id/myattent"
+                android:layout_marginLeft="18dp"
                 android:gravity="center_horizontal"
                 android:layout_width="48dp"
                 android:orientation="vertical"
-                android:layout_height="48dp">
+                android:layout_height="46dp">
 
                 <ImageView
                     android:background="@mipmap/group_2"
@@ -131,19 +133,21 @@
                 <TextView
                     android:textColor="#fff"
                     android:text="我的关注"
-                    android:layout_margin="8dp"
+                    android:layout_marginTop="6dp"
                     android:gravity="center"
+                    android:textSize="12sp"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/line_subscribe"
                 android:layout_weight="1"
+                android:layout_gravity="center"
+                android:id="@+id/mymake"
                 android:gravity="center_horizontal"
                 android:layout_width="48dp"
                 android:orientation="vertical"
-                android:layout_height="48dp">
+                android:layout_height="46dp">
 
                 <ImageView
                     android:background="@mipmap/group_4"
@@ -151,19 +155,20 @@
                     android:layout_height="24dp" />
                 <TextView
                     android:textColor="#fff"
-                    android:layout_margin="8dp"
+                    android:layout_marginTop="6dp"
                     android:text="我的预约"
                     android:gravity="center"
+                    android:textSize="12sp"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/line_ticket"
+                android:id="@+id/mybuy"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:layout_width="48dp"
                 android:orientation="vertical"
-                android:layout_height="48dp">
+                android:layout_height="46dp">
 
                 <ImageView
                     android:background="@mipmap/chongzhijilu"
@@ -171,27 +176,30 @@
                     android:layout_height="24dp" />
                 <TextView
                     android:textColor="#fff"
-                    android:layout_margin="8dp"
+                    android:layout_marginTop="6dp"
                     android:text="购票记录"
                     android:gravity="center"
+                    android:textSize="12sp"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:gravity="center_vertical"
             android:layout_weight="1"
+
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="312dp"
+            android:layout_height="46dp">
 
             <LinearLayout
-                android:id="@+id/line_seek_movie"
+                android:layout_marginLeft="18dp"
+                android:id="@+id/mylookmove"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:layout_width="48dp"
                 android:orientation="vertical"
-                android:layout_height="48dp">
+                android:layout_height="46dp">
 
                 <ImageView
                     android:background="@mipmap/chongzhijil"
@@ -200,19 +208,20 @@
                 <TextView
                     android:textColor="#fff"
                     android:text="看过的电影"
-                    android:layout_margin="8dp"
+                    android:layout_marginTop="6dp"
                     android:gravity="center"
+                    android:textSize="12sp"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/line_discuss"
+                android:id="@+id/mycomment"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:layout_width="48dp"
                 android:orientation="vertical"
-                android:layout_height="48dp">
+                android:layout_height="46dp">
 
                 <ImageView
                     android:background="@mipmap/group_3"
@@ -220,14 +229,15 @@
                     android:layout_height="24dp" />
                 <TextView
                     android:textColor="#fff"
+                    android:layout_marginTop="6dp"
                     android:text="我的评论"
-                    android:layout_margin="8dp"
                     android:gravity="center"
+                    android:textSize="12sp"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/line_tickling"
+                android:id="@+id/myider"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:layout_width="48dp"
@@ -240,11 +250,12 @@
                     android:layout_height="24dp" />
                 <TextView
                     android:textColor="#fff"
+                    android:layout_marginTop="6dp"
                     android:text="意见反馈"
-                    android:layout_margin="8dp"
                     android:gravity="center"
+                    android:textSize="12sp"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -253,27 +264,48 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
-                android:id="@+id/line_install"
+                android:layout_marginLeft="18dp"
+                android:id="@+id/myset"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:layout_width="48dp"
                 android:orientation="vertical"
-                android:layout_height="48dp">
+                android:layout_height="46dp">
 
                 <ImageView
-                    android:background="@mipmap/invalidname"
+                    android:background="@mipmap/chongzhijil"
                     android:layout_width="24dp"
                     android:layout_height="24dp" />
                 <TextView
                     android:textColor="#fff"
+                    android:layout_marginTop="6dp"
                     android:text="设置"
-                    android:layout_margin="8dp"
                     android:gravity="center"
+                    android:textSize="12sp"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:id="@+id/line_install"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:layout_width="48dp"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_height="48dp">-->
+
+<!--                <ImageView-->
+<!--                    android:background="@mipmap/invalidname"-->
+<!--                    android:layout_width="24dp"-->
+<!--                    android:layout_height="24dp" />-->
+<!--                <TextView-->
+<!--                    android:textColor="#fff"-->
+<!--                    android:text="设置"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="15dp" />-->
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_weight="1"

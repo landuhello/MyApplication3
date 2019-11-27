@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ReyingoneAdapter extends RecyclerView.Adapter {
     private Context context;
-    private List<ZhengBean.ResultBean> zhenglist=new ArrayList<>();
+    private List<ZhengBean.ResultBean> zhenglist = new ArrayList<>();
 
     public ReyingoneAdapter(Context context) {
         this.context = context;
@@ -42,7 +42,7 @@ public class ReyingoneAdapter extends RecyclerView.Adapter {
         viewHolder1.tv_yingzhangfive.setText(zhenglist.get(i).getName());
         viewHolder1.tv_yingzhangone.setText(zhenglist.get(i).getDirector());
         viewHolder1.tv_yingzhangtwo.setText(zhenglist.get(i).getStarring());
-        viewHolder1.tv_yingzhangthree.setText(zhenglist.get(i).getScore()+""+"分");
+        viewHolder1.tv_yingzhangthree.setText(zhenglist.get(i).getScore() + "" + "分");
         Glide.with(context)
                 .load(zhenglist.get(i).getImageUrl())
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
@@ -50,25 +50,26 @@ public class ReyingoneAdapter extends RecyclerView.Adapter {
     }
 
     public void getying(List<ZhengBean.ResultBean> result) {
-        if (result!=null&&result.size()>0){
+        if (result != null && result.size() > 0) {
             zhenglist.addAll(result);
         }
         notifyDataSetChanged();
     }
 
 
-    class  ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_yingzhang;
-        TextView tv_yingzhangfive,tv_yingzhangone,tv_yingzhangtwo,tv_yingzhangthree;
+        TextView tv_yingzhangfive, tv_yingzhangone, tv_yingzhangtwo, tv_yingzhangthree;
         Button but_yinggou;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            iv_yingzhang=itemView.findViewById(R.id.iv_yingzhang);
-            tv_yingzhangfive=itemView.findViewById(R.id.tv_yingzhangfive);
-            tv_yingzhangone=itemView.findViewById(R.id.tv_yingzhangone);
-            tv_yingzhangtwo=itemView.findViewById(R.id.tv_yingzhangtwo);
-            tv_yingzhangthree=itemView.findViewById(R.id.tv_yingzhangthree);
-            but_yinggou=itemView.findViewById(R.id.but_yinggou);
+            iv_yingzhang = itemView.findViewById(R.id.iv_yingzhang);
+            tv_yingzhangfive = itemView.findViewById(R.id.tv_yingzhangfive);
+            tv_yingzhangone = itemView.findViewById(R.id.tv_yingzhangone);
+            tv_yingzhangtwo = itemView.findViewById(R.id.tv_yingzhangtwo);
+            tv_yingzhangthree = itemView.findViewById(R.id.tv_yingzhangthree);
+            but_yinggou = itemView.findViewById(R.id.but_yinggou);
         }
     }
 
