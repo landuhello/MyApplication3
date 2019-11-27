@@ -6,7 +6,9 @@ import com.example.myapplication.model.api.Api;
 import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.CinemaByRegionBean;
 import com.example.myapplication.model.bean.CinemadetailsBean;
+import com.example.myapplication.model.bean.CommentBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
@@ -16,7 +18,9 @@ import com.example.myapplication.model.bean.NearbyBean;
 import com.example.myapplication.model.bean.PaiqiBean;
 import com.example.myapplication.model.bean.QuyuchaxBean;
 import com.example.myapplication.model.bean.RegBean;
+import com.example.myapplication.model.bean.RegionListBean;
 import com.example.myapplication.model.bean.RmenBean;
+import com.example.myapplication.model.bean.SeatleBean;
 import com.example.myapplication.model.bean.ToolBean;
 import com.example.myapplication.model.bean.YanzhengBean;
 import com.example.myapplication.model.bean.ZhengBean;
@@ -145,6 +149,74 @@ import retrofit2.http.HEAD;
                     @Override
                     public void accept(DetilBean detilBean) throws Exception {
                         callBack.success(detilBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+
+    }
+    //查询区域列表
+    public void regionList(final CallBack callBack) {
+        api.regionList()
+           .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<RegionListBean>() {
+                    @Override
+                    public void accept(RegionListBean regionListBean) throws Exception {
+                      callBack.success(regionListBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    };
+    //根据区域查询影院
+    public void cinemaByRegion(final CallBack callBack, int regionId) {
+        api.cinemaByRegion(regionId)
+        .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<CinemaByRegionBean>() {
+                    @Override
+                    public void accept(CinemaByRegionBean cinemaByRegionBean) throws Exception {
+                        callBack.success(cinemaByRegionBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    //查询评论
+    public void getComment(int movieId,Map<String,Integer> headMap, final CallBack callBack){
+        api.getcomment(movieId,headMap)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<CommentBean>() {
+                    @Override
+                    public void accept(CommentBean commentBean) throws Exception {
+                       callBack.success(commentBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    public void doSeatle(int hallId, final CallBack callBack) {
+        api.Seatle(hallId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<SeatleBean>() {
+                    @Override
+                    public void accept(SeatleBean seatleBean) throws Exception {
+                        callBack.success(seatleBean);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

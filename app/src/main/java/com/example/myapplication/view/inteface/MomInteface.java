@@ -6,7 +6,9 @@ import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.CinemaByRegionBean;
 import com.example.myapplication.model.bean.CinemadetailsBean;
+import com.example.myapplication.model.bean.CommentBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
@@ -16,7 +18,9 @@ import com.example.myapplication.model.bean.NearbyBean;
 import com.example.myapplication.model.bean.PaiqiBean;
 import com.example.myapplication.model.bean.QuyuchaxBean;
 import com.example.myapplication.model.bean.RegBean;
+import com.example.myapplication.model.bean.RegionListBean;
 import com.example.myapplication.model.bean.RmenBean;
+import com.example.myapplication.model.bean.SeatleBean;
 import com.example.myapplication.model.bean.ToolBean;
 import com.example.myapplication.model.bean.YanzhengBean;
 import com.example.myapplication.model.bean.ZhengBean;
@@ -46,6 +50,7 @@ import com.example.myapplication.model.bean.ZhengBean;
     interface dopaiqi extends Baseinteface{
          void success(PaiqiBean bean);
      }
+     //首页
     interface IBanner extends Baseinteface{
         void ok(BannerBean bannerBean);
         void no(String mag);
@@ -53,10 +58,23 @@ import com.example.myapplication.model.bean.ZhengBean;
         void reyji(JiBean jiBean);
         void remen(RmenBean rmenBean);
     }
+    //电影评论
+    interface IComment extends Baseinteface{
+         void success(CommentBean commentBean);
+    }
+    //根据影厅id 查询座位信息
+    interface ISeate extends Baseinteface{
+         void success(SeatleBean seatleBean);
+    }
     //电影详情
     interface IDetail extends Baseinteface{
          void ok(DetilBean detilBean);
          void no(String msg);
+    }
+    //查询区域列表
+    interface IRegionListView extends Baseinteface{
+        void regionSuccess(RegionListBean regionListBean);
+        void cinemaByRegionSuccess(CinemaByRegionBean cinemaByRegionBean);
     }
     //地址
     interface docindizhi extends Baseinteface{

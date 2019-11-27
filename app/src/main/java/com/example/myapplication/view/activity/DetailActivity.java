@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -38,7 +39,7 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailActivity extends BaseActivity<DetailPresenter> implements MomInteface.IDetail {
+public class  DetailActivity extends BaseActivity<DetailPresenter> implements MomInteface.IDetail {
 
 
     @BindView(R.id.iv_xiangone)
@@ -79,6 +80,7 @@ public class DetailActivity extends BaseActivity<DetailPresenter> implements Mom
     Button btnXuanzuo;
     private DetilBean.ResultBean result;
     private ArrayList<Fragment> billlist;
+    public static int movie;
 
     @Override
     protected int initview() {
@@ -95,8 +97,9 @@ public class DetailActivity extends BaseActivity<DetailPresenter> implements Mom
     protected void initdata() {
         //接收传值
         Intent it = getIntent();
-        int movieId = it.getIntExtra("movieId", 0);
+        final int movieId = it.getIntExtra("movieId", 0);
         Log.e("AAA", movieId + "");
+        movie=movieId;
         t.setdetcil(movieId);
         //fragment
         billlist = new ArrayList<>();
@@ -111,6 +114,35 @@ public class DetailActivity extends BaseActivity<DetailPresenter> implements Mom
         xiangTab.getTabAt(1).setText("预告");
         xiangTab.getTabAt(2).setText("剧照");
         xiangTab.getTabAt(3).setText("影评");
+        btnXieyingpin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailActivity.this, Write_reviewsActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnXuanzuo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(DetailActivity.this, ByReginActivity.class);
+                //传视频
+                intent1.putExtra("videoUrl",result.shortFilmList.get(0).videoUrl);
+                //传照片
+                intent1.putExtra("imageUrl",result.shortFilmList.get(0).imageUrl);
+                //传电影名称
+                intent1.putExtra("movieName",result.name);
+                //传评分
+                intent1.putExtra("movieScore",result.score);
+                //传电影ID
+                intent1.putExtra("movieId",result.movieId);
+                //传时长
+                intent1.putExtra("movieDuration",result.duration);
+                //传导演名字
+                intent1.putExtra("movieDirector",result.movieDirector.get(0).name);
+                startActivity(intent1);
+
+            }
+        });
     }
 
     @Override

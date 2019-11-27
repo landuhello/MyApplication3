@@ -22,6 +22,7 @@ public abstract class BaseFragment<F extends BasePresenter> extends Fragment imp
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(setLayout(), container, false);
+        bind = ButterKnife.bind(getActivity());
         return inflate;
     }
 
@@ -29,20 +30,17 @@ public abstract class BaseFragment<F extends BasePresenter> extends Fragment imp
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
-        bind = ButterKnife.bind(getActivity());
         f = setFrag();
         f.bind(this);
         initData();
     }
 
-    protected abstract void initData();
+
 
     protected abstract F setFrag();
-
     protected abstract void initView();
-
     protected abstract  int setLayout();
-
+    protected abstract void initData();
     public <T extends View> T getViewId(int id){
         return getView().findViewById(id);
     }

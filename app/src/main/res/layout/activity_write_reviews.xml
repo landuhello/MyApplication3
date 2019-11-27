@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#141931"
+    tools:context=".view.activity.Write_reviewsActivity">
+
+    <RelativeLayout
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_height="26dp">
+
+        <ImageView
+            android:id="@+id/details_back"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/shapee" />
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:text="写评语"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:layout_width="48dp"
+            android:layout_height="22dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="#1c2243"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="38dp">
+
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:id="@+id/text_name"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="#fff"
+            android:id="@+id/text_pingf"
+            android:text="我的评分  (5.5分)"
+            android:textSize="12dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="106dp"
+            android:layout_height="17dp" />
+        <RatingBar
+            android:id="@+id/rating_bar"
+            android:numStars="5"
+            android:rating="1.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="写点评价吧"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            android:layout_width="60dp"
+            android:layout_height="17dp" />
+        <EditText
+            android:id="@+id/edit_txt"
+            android:background="#1c2243"
+            android:layout_width="match_parent"
+            android:layout_height="129dp" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/but_tj"
+        android:background="#e8185e"
+        android:textSize="14sp"
+        android:text="提交"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

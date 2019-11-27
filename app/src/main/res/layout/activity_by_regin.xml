@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#141931"
+    tools:context=".view.activity.ByReginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+            android:id="@+id/by_jcv_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="40dp"
+            android:id="@+id/by_iv_back"
+            android:background="@mipmap/shone" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/by_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:textSize="14sp"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时长"
+                android:textSize="12dp"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:id="@+id/by_tv_shichang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textSize="12dp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="6dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="80dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="评分"
+                android:textSize="12dp"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:id="@+id/by_tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textSize="12sp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="6dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="80dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="导演"
+                android:textSize="12sp"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:id="@+id/by_tv_director"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textSize="12sp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="6dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        android:background="#1c2243">
+
+        <Button
+            android:id="@+id/by_btn_chose_region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:text="海淀区"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="5dp"
+            android:background="@drawable/arrow_drop_down"
+            android:layout_centerVertical="true"
+            android:id="@+id/by_iv_xiang"
+            android:layout_marginLeft="85dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今天  05-14"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="112dp"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="5dp"
+            android:background="@drawable/arrow_drop_down"
+            android:layout_marginLeft="187dp"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="价格最低"
+            android:textSize="14dp"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="230dp"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/icon_search"
+            android:layout_marginLeft="320dp"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/by_recycler_cinema"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        >
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

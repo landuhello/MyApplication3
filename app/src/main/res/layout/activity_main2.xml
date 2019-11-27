@@ -28,8 +28,9 @@
             <ImageView
                 android:visibility="gone"
                 android:id="@+id/image_movei_dj"
-                android:background="@mipmap/movie"
-                android:layout_width="20dp"
+                android:src="@mipmap/movie"
+                android:layout_width="100dp"
+                android:scaleType="centerInside"
                 android:layout_height="20dp" />
             <LinearLayout
                 android:id="@+id/lin_movei"
@@ -62,8 +63,9 @@
             <ImageView
 
                 android:id="@+id/image_cinem_dj"
-                android:background="@mipmap/cinema"
-                android:layout_width="20dp"
+                android:src="@mipmap/cinema"
+                android:layout_width="100dp"
+                android:scaleType="centerInside"
                 android:layout_height="20dp" />
             <LinearLayout
                 android:visibility="gone"
@@ -96,8 +98,9 @@
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/image_myy_dj"
-                android:background="@drawable/myone"
-                android:layout_width="20dp"
+                android:src="@drawable/myone"
+                android:layout_width="100dp"
+                android:scaleType="centerInside"
                 android:layout_height="20dp" />
             <LinearLayout
                 android:visibility="gone"

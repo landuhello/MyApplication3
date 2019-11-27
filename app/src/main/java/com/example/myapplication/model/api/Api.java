@@ -4,7 +4,9 @@ import com.example.myapplication.model.bean.AllcimBean;
 import com.example.myapplication.model.bean.BannerBean;
 import com.example.myapplication.model.bean.CindizhiBean;
 import com.example.myapplication.model.bean.CinemaBean;
+import com.example.myapplication.model.bean.CinemaByRegionBean;
 import com.example.myapplication.model.bean.CinemadetailsBean;
+import com.example.myapplication.model.bean.CommentBean;
 import com.example.myapplication.model.bean.DayBean;
 import com.example.myapplication.model.bean.DetilBean;
 import com.example.myapplication.model.bean.JiBean;
@@ -14,7 +16,9 @@ import com.example.myapplication.model.bean.NearbyBean;
 import com.example.myapplication.model.bean.PaiqiBean;
 import com.example.myapplication.model.bean.QuyuchaxBean;
 import com.example.myapplication.model.bean.RegBean;
+import com.example.myapplication.model.bean.RegionListBean;
 import com.example.myapplication.model.bean.RmenBean;
+import com.example.myapplication.model.bean.SeatleBean;
 import com.example.myapplication.model.bean.ToolBean;
 import com.example.myapplication.model.bean.YanzhengBean;
 import com.example.myapplication.model.bean.ZhengBean;
@@ -54,6 +58,7 @@ import retrofit2.http.QueryMap;
     //推荐影院
     @GET("cinema/v1/findRecommendCinemas")
     Observable<CinemaBean> docin(@QueryMap Map<String,Integer> map);
+
 
     //附近影院
     @GET("cinema/v1/findNearbyCinemas")
@@ -95,4 +100,20 @@ import retrofit2.http.QueryMap;
     //模糊查询电影院
     @GET("cinema/v1/findAllCinemas")
     Observable<MhmoveyBean> domhmovey(@QueryMap Map<String,Integer>map,@Query("cinemaName")String cinemaName);
+    //评论
+    @GET("movie/v2/findAllMovieComment?movieId=22&page=1&count=10")
+    Observable<CommentBean> getcomment(@Query("movieId") int movieId , @QueryMap Map<String,Integer> headMap);
+    //查询区域列表
+    @GET("tool2/findRegionList")
+    Observable<RegionListBean> regionList();
+
+    //根据区域查询影院
+    @GET("cinema2/findCinemaByRegion")
+    Observable<CinemaByRegionBean> cinemaByRegion(@Query("regionId") int regionId);
+
+    //根据影厅id 查询座位信息
+    @GET("movie/v2/findSeatInfo")
+    Observable<SeatleBean> Seatle(@Query("hallId") int hallId);
+
+
 }

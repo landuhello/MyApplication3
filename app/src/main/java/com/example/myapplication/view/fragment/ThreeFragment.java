@@ -146,7 +146,6 @@ import butterknife.Unbinder;
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-        loginPresenter.unbind();
     }
 
 

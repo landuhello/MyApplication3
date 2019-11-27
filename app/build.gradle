@@ -11,6 +11,20 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        applicationId "com.android.application"
+
+        ndk {
+            //根据需要 自行选择添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+
+                XG_ACCESS_ID:"2100300660",
+                XG_ACCESS_KEY : "A44FJ9N7N9EY",
+        ]
     }
     buildTypes {
         debug {
@@ -28,10 +42,10 @@ android {
 
 
         release {
-         lintOptions {
-            checkReleaseBuilds false
-             abortOnError false
-         }
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -91,4 +105,14 @@ dependencies {
     implementation 'org.greenrobot:greendao:3.0.1'
     implementation 'org.greenrobot:greendao-generator:3.0.0'
     implementation 'com.android.support:multidex:1.0.3'
+
+
+    //信鸽jar
+    implementation 'com.tencent.xinge:xinge:3.2.7-Release'
+    //jg包
+    implementation'com.tencent.jg:jg:1.1'
+    //wup包
+    implementation  'com.tencent.wup:wup:1.0.0.E-Release'
+    //mid包
+    implementation 'com.tencent.mid:mid:4.0.6-release'
 }
